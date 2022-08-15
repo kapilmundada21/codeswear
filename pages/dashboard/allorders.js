@@ -35,7 +35,6 @@ const Allorders = ({ orders }) => {
       setMyOrder(response.order)
     }
     else {
-      console.log('false');
       toast.error(response.error, {
         position: "top-center",
         autoClose: 3000,  

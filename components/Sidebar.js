@@ -93,6 +93,7 @@ const Sidebar = () => {
                         <Link href={'/dashboard/alladmin'}><a><li className='text-[#fff] w-full pl-4 py-2 hover:bg-[#198383]'>All Admins</li></a></Link>
                         <Link href={'/dashboard/saveadmin'}><a><li className='text-[#fff] w-full pl-4 py-2 hover:bg-[#198383]'>Add Admin</li></a></Link>
                         <Link href={'/dashboard/allorders'}><a><li className='text-[#fff] w-full pl-4 py-2 hover:bg-[#198383]'>All Orders</li></a></Link>
+                        <Link href={'/dashboard/productAnalysis'}><a><li className='text-[#fff] w-full pl-4 py-2 hover:bg-[#198383]'>Product Analysis</li></a></Link>
                     </ul>
                 </div>
             </div>
