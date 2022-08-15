@@ -7,9 +7,6 @@ import { FaBars } from 'react-icons/fa';
 const Sidebar = () => {
     return (
         <>
-            <Head>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
-            </Head>
             <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8" />
             <style jsx global>{` 
             Footer{display:none} 
@@ -82,8 +79,8 @@ const Sidebar = () => {
             <div>
                 <input className='hidden' type="checkbox" id="check" />
                 <div className="sidebar bg-[#2f323a] pt-5 fixed left-0 top-16 w-52 h-full">
-                    {/* <FaBars className='text-[#fff] hover:text-[#19b3d3] bg-[#2f323a] text-xl mx-6 z-10' /> */}
-                    <label htmlFor="check"><i className="fas fa-bars text-[#fff] hover:text-[#19b3d3] bg-[#2f323a] text-xl mx-6 z-10" id="sidebar_btn"></i></label>
+                    <label htmlFor="check"><FaBars className='cursor-pointer text-[#fff] hover:text-[#19b3d3] bg-[#2f323a] text-xl mx-6 z-10' id="sidebar_btn" /></label>
+                    <label htmlFor="check"><i className="fas fa-bars cursor-pointer text-[#fff] hover:text-[#19b3d3] bg-[#2f323a] text-xl mx-6 z-10" id="sidebar_btn"></i></label>
                     <center>
                         <img src="/tshirt.jfif" className="rounded-3xl my-8" height={70} width={70} alt="" />
                     </center>

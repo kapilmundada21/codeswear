@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Order from '../models/order';
 import mongoose from "mongoose";
 import Link from 'next/link'
+import { AiFillPrinter } from 'react-icons/Ai';
+import { useReactToPrint } from 'react-to-print';
 
 const Orderr = ({ order }) => {
+    const printOrder = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => printOrder.current,
+    });
     return (
         <div>
-            <section className="text-gray-600 body-font">
+            <section className="text-gray-600 body-font" ref={printOrder}>
                 <div className="container px-12 md:px-5 py-8 md:py-24 mx-auto">
                     <div className="lg:w-11/12 mx-auto flex flex-wrap">
                         <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
@@ -30,35 +36,36 @@ const Orderr = ({ order }) => {
                                                 Quantity
                                             </th>
                                             <th scope="col" className="text-sm md:text-lg font-medium text-gray-900 px-6 py-4 text-left">
-                                                Item Total
+                                                Total
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Object.keys(order.products).map((item) => {
                                             return <tr key={item} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                                    <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        <Link key={item} href={`/product/${item}`} >{order.products[item].name}</Link>
-                                                    </td>
-                                                    <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {order.products[item].price}
-                                                    </td>
-                                                    <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {order.products[item].qty}
-                                                    </td>
-                                                    <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        ₹{(order.products[item].price) * (order.products[item].qty)}
-                                                    </td>
-                                                </tr>
+                                                <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    <Link key={item} href={`/product/${item}`} >{order.products[item].name}</Link>
+                                                </td>
+                                                <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {order.products[item].price}
+                                                </td>
+                                                <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {order.products[item].qty}
+                                                </td>
+                                                <td className="text-sm md:text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    ₹{(order.products[item].price) * (order.products[item].qty)}
+                                                </td>
+                                            </tr>
                                         })}
                                     </tbody>
                                 </table>
                             </div>
 
-                            <div className="flex flex-col mt-4">
-                                <span className="title-font font-medium text-2xl text-gray-900">₹{order.amount}</span>
-                                <div>
-                                    <button className="flex mt-4 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Track</button>
+                            <div className="flex flex-col mt-4 space-y-6">
+                                <span className="title-font font-medium text-xl text-gray-900">Total Amount : ₹{order.amount}</span>
+                                <div className='flex space-x-8'>
+                                    <button className="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Track</button>
+                                    <button onClick={handlePrint} className='flex items-center text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm'><AiFillPrinter className='text-xl cursor-pointer mr-1' /> Print</button>
                                 </div>
                             </div>
                         </div>

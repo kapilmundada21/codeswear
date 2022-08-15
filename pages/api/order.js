@@ -3,6 +3,22 @@ import connectDb from "../../middleware/mongoose"
 
 const handler = async (req, res) => {
     if (req.method == 'POST') {
+        if (req.body.searchbyid) {
+            let orderById;
+            try {
+                orderById = await Order.findOne({ _id: req.body.id })
+            } catch (error) {
+                
+            }
+            if(orderById){
+                res.status(200).json({ sucess: true, order: orderById })
+                return
+            }
+            else{
+                res.status(200).json({ sucess: false, error: 'Order not found' })
+                return
+            }
+        }
         const { email,products,address,amount,status } = req.body
         let u = await new Order({email,products,address,amount,status })
         await u.save()

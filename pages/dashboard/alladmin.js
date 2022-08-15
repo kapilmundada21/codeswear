@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Admin from "../../models/admin"
 import mongoose from "mongoose";
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
@@ -8,11 +8,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar';
+import { FiDownload } from 'react-icons/fi';
+import { useReactToPrint } from 'react-to-print';
 
 const Alladmin = ({ admins }) => {
     const router = useRouter()
     const [search, setSearch] = useState('')
     const [admin, setAdmin] = useState()
+    const allorders = useRef();
+    const handlePrint = useReactToPrint({
+      content: () => allorders.current,
+    });
     const handelChange = (e) => {
         if (e.target.name == 'search') {
             setSearch(e.target.value)
@@ -93,18 +99,21 @@ const Alladmin = ({ admins }) => {
                     draggable
                     pauseOnHover
                 />
-                <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4'>
+                <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                     <h1 className='text-xl md:text-2xl font-bold'>All Admins</h1>
-                    <div className='flex space-x-1'>
-                        <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        <button onClick={searchadmin} className="text-white bg-indigo-500 border-0 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm"><FaSearchPlus /> </button>
+                    <div className='flex md:space-x-8'>
+                        <div className="flex space-x-1">
+                          <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                          <button onClick={searchadmin} className="text-white bg-indigo-500 border-0 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm"><FaSearchPlus /> </button>
+                        </div>
+                        <button onClick={handlePrint} className='flex items-center text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm'><FiDownload className='text-l cursor-pointer mr-1' /> Download</button>
                     </div>
                 </div>
 
                 <div className="flex flex-col">
                     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <table className="min-w-full">
+                            <table className="min-w-full" ref={allorders}>
                                 <thead className="bg-white border-b">
                                     <tr>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-center">

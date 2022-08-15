@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from 'emailjs-com';
 
 const Forgetpassword = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [cpassword, setCpassword] = useState('')
+    const [token, setToken] = useState('')
+    const [host, setHost] = useState(process.env.NEXT_PUBLIC_HOST)
     const router = useRouter()
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -38,18 +41,36 @@ const Forgetpassword = () => {
         })
         let response = await a.json()
         if (response.sucess) {
-            toast.success('Password reset instructions have been sent to your email', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });
-                setTimeout(() => {
-                    router.push("/login")
-                }, 1000);
+            setToken(response.token)
+            setTimeout(() => {
+                emailjs.sendForm('service_i0xpctc', 'template_k5exhfc', e.target, 'B3FiuvQc4AkxpalNW')
+                    .then((result) => {
+                        console.log(result.text);
+                        toast.success('Password reset instructions have been sent to your email', {
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
+                        setTimeout(() => {
+                            router.push("/login")
+                        }, 1000);
+                    }, (error) => {
+                        console.log(error.text);
+                        toast.error(error.text, {
+                            position: "top-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
+                    });
+            }, 1000);
         }
         else {
             toast.error(response.error, {
@@ -60,7 +81,7 @@ const Forgetpassword = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
     }
     const resetPassword = async (e) => {
@@ -79,9 +100,9 @@ const Forgetpassword = () => {
             response = await a.json()
         }
         else {
-            response = { sucess: false, error:'Password not matched!' }
+            response = { sucess: false, error: 'Password not matched!' }
         }
-        
+
         if (response.sucess) {
             toast.success('Password has been changed Sucessfully!', {
                 position: "top-center",
@@ -91,10 +112,10 @@ const Forgetpassword = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
         else {
-            toast.error(response.error , {
+            toast.error(response.error, {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -102,7 +123,7 @@ const Forgetpassword = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
     }
     return (
@@ -159,7 +180,11 @@ const Forgetpassword = () => {
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label htmlFor="email-address" className="sr-only">Email address</label>
-                                <input onChange={handelChange} value={email} id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+                                <input onChange={handelChange} value={email} id="email" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+                            </div>
+                            <div>
+                                <input onChange={handelChange} value={token} id="token" name="token" type="token" autoComplete="token" className="hidden appearance-none rounded-none relative w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="token" />
+                                <input onChange={handelChange} value={host} id="host" name="host" type="host" autoComplete="host" className="hidden appearance-none rounded-none relative w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="host" />
                             </div>
                         </div>
                         <div>

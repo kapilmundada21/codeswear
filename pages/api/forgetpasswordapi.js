@@ -12,9 +12,7 @@ const handler = async (req, res) => {
             let token = jwt.sign({ email: user.email }, process.env.JWT_SECRET);
             let forgetpass = new ForgetPass({ email: req.body.email, token })
             await forgetpass.save()
-            // Send an email to the user
-            let email = `We have sent you this email in response to your request to reset your password on Codeswear.com To reset your password, please follow the link below: <a href="${process.env.NEXT_PUBLIC_HOST}/forgetpassword?token=${token}">click here to change password</a> <br/> <br/> We recommend that you keep your password secure and not share it with anyone. If you feel your password has been compromised, you can change it by going to your My Account Page and change your password.`
-            res.status(200).json({ sucess: true })
+            res.status(200).json({ sucess: true , token })
             return
         }
         else {
@@ -29,7 +27,7 @@ const handler = async (req, res) => {
             res.status(200).json({ sucess: true })
             return
         }
-        res.status(200).json({ sucess: false, error:'Invalid Token' })
+        res.status(200).json({ sucess: false, error: 'Invalid Token' })
         return
     }
 }
