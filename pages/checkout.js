@@ -150,11 +150,11 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
                     </div>
                 </div>
                 <h2 className='font-semibold text-xl'>2. Checkout</h2>
-                <div className="shopCart bg-pink-300 px-8 py-4 mt-2">
-                    <div className="overflow-x-auto">
+                <div className="shopCart px-8 py-4 mt-2">
+                    <div className="overflow-x-auto border-2 border-[#dad9d9]">
                     {Object.keys(cart).length == 0 && <div>Your Cart is Empty!</div>}
                     {Object.keys(cart).length != 0 && <table className="min-w-full">
-                            <thead className="bg-transparent border-b">
+                            <thead className="bg-[#dad9d9] border-b">
                                 <tr>
                                     <th scope="col" className="text-sm md:text-lg font-medium text-gray-900 px-6 py-4 text-left">
                                         Name
@@ -172,7 +172,7 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
                             </thead>
                             <tbody>
                                 {Object.keys(cart).map((k) => {
-                                    return <tr key={k} className="bg-transparent transition duration-300 ease-in-out hover:bg-pink-400">
+                                    return <tr key={k} className="bg-transparent transition duration-300 ease-in-out hover:bg-[#e8e7e7]">
                                         <td className="text-sm md:text-lg px-6 py-2 whitespace-nowrap">
                                             {cart[k].name} ({cart[k].size},{cart[k].variant})
                                         </td>
