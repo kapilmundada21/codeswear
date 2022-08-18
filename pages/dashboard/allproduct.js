@@ -108,7 +108,7 @@ const Allproduct = ({ products }) => {
                         draggable
                         pauseOnHover
                     />
-                    <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4'>
+                    <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                         <h1 className='text-xl md:text-2xl font-bold'>All Products</h1>
                         <div className='flex space-x-1'>
                             <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -118,7 +118,7 @@ const Allproduct = ({ products }) => {
                     <section className="mx-auto text-gray-600 body-font">
                         <div className="container px-5 -my-8 md:py-4 mx-auto">
                             <div className="flex flex-wrap md:mx-4 -m-4 justify-center">
-                                {Object.keys(products).length === 0 && <p>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
+                                {Object.keys(products).length === 0 && <p className='my-32'>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
                                 <div className="flex flex-wrap my-8 -m-4">
                                     {!product && Object.keys(products).reverse().map((item) => {
                                         return <div key={products[item]._id} className="p-4 lg:w-1/2 mx-auto">

@@ -9,12 +9,12 @@ const Login = ({setuser}) => {
     useEffect(() => {
         let myUser = JSON.parse(localStorage.getItem('myUser'))
         try {
-            if (myUser) {
-              router.push('/')
-            }
-          } catch (error) {
             if (myUser.token) {
               router.push('/')
+            }
+        } catch (error) {
+            if (myUser) {
+            router.push('/')
             }
           }
     }, [])

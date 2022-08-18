@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
+import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/Ai';
 import { useRouter } from 'next/router'
 import Product from "../models/Product"
 import mongoose from "mongoose";
@@ -151,8 +151,8 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
                 </div>
                 <h2 className='font-semibold text-xl'>2. Checkout</h2>
                 <div className="shopCart px-8 py-4 mt-2">
-                    <div className="overflow-x-auto border-2 border-[#dad9d9]">
                     {Object.keys(cart).length == 0 && <div>Your Cart is Empty!</div>}
+                    <div className="overflow-x-auto border-2 border-[#dad9d9]">
                     {Object.keys(cart).length != 0 && <table className="min-w-full">
                             <thead className="bg-[#dad9d9] border-b">
                                 <tr>

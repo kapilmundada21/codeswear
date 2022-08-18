@@ -219,7 +219,7 @@ const Myaccount = () => {
                 <input type="text" id="state" name="state" onChange={handelChange} value={state} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
-            <button type='submit' className="flex mb-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Submit</button>
+            <button type='submit' className="flex mb-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Save Changes</button>
           </div>
         </form>
         <form onSubmit={handelPasswordSubmit}>
@@ -239,7 +239,7 @@ const Myaccount = () => {
                 <input onChange={handelChange} value={cpassword} type="password" required id="cpassword" name="cpassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="current-password" />
               </div>
             </div>
-            <button type='submit' className="flex text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Submit</button>
+            <button type='submit' className="flex text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Change Password</button>
           </div>
         </form>
       </div>

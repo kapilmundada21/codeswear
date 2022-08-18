@@ -9,11 +9,11 @@ const Signup = () => {
     useEffect(() => {
         let myUser = JSON.parse(localStorage.getItem('myUser'))
         try {
-            if (myUser) {
+            if (myUser.token) {
                 router.push('/')
             }
         } catch (error) {
-            if (myUser.token) {
+            if (myUser) {
                 router.push('/')
             }
         }

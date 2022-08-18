@@ -45,6 +45,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                     <Link href="/"><a><li>Home</li></a></Link>
                     <Link href="/"><a><li>About</li></a></Link>
                     <Link href="/tshirts"><a><li>T-Shirts</li></a></Link>
+                    <Link href="/contactus"><a><li>Contact Us</li></a></Link>
                     {admin.token && <Link href="/dashboard"><a><li>Dashboard</li></a></Link>}
                 </ul>
             </div>
