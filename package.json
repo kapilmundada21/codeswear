@@ -4,32 +4,28 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "babel src -d lib",
-    "test": "jest",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "heroku-postbulid": "npm run build"
+    "lint": "next lint"
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
     "emailjs-com": "^3.2.0",
-    "eslit": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2",
-    "next": "^12.2.5",
-    "node": "^16.15.0",
+    "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-to-print": "^2.14.7",
-    "react-toastify": "^9.0.8",
+    "react-toastify": "^9.0.7",
     "react-top-loading-bar": "^2.1.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.7",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
   }
 }
