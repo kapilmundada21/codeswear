@@ -26,7 +26,7 @@ const Alladmin = ({ admins }) => {
     }
     const searchadmin = async () => {
         let data = { id: search, searchbyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/admin`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -51,7 +51,7 @@ const Alladmin = ({ admins }) => {
     }
     const deleteadmin = async (adminId) => {
         let data = { id: adminId, deletebyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/admin`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

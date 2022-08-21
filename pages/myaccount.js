@@ -71,7 +71,7 @@ const Myaccount = () => {
 
   const fetchUser = async (token) => {
     const data = { token };
-    let a = await fetch(`https://codeswere.herokuapp.com/api/getuser`, {
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const Myaccount = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     const data = { name, email, address, password, phone, pincode, city, state, token };
-    let a = await fetch(`https://codeswere.herokuapp.com/api/updateuser`, {
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const Myaccount = () => {
     let response;
     if (npassword == cpassword) {
       const data = { npassword, cpassword, password, token };
-      let a = await fetch(`https://codeswere.herokuapp.com/api/updatepassword`, {
+      let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updatepassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

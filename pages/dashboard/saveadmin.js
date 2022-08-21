@@ -54,7 +54,7 @@ const Saveadmin = () => {
         let response;
         if (npassword == cpassword) {
             const data = { name, email, cpassword, npassword }
-            let res = await fetch(`https://codeswere.herokuapp.com/api/addadmin`, {
+            let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addadmin`, {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': ' application/json',
@@ -92,7 +92,7 @@ const Saveadmin = () => {
     const update = async (e) => {
         e.preventDefault()
         let data = { updatebyid: true, id, name, email }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/admin`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -125,7 +125,7 @@ const Saveadmin = () => {
     }
     const getAdmin = async () => {
         let data = { id, searchbyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/admin`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

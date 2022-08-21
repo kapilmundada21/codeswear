@@ -85,7 +85,7 @@ const Saveuser = () => {
         let response;
         if (npassword == cpassword) {
             const data = { name, email, address, city, phone, pincode, state, cpassword, npassword }
-            let res = await fetch(`https://codeswere.herokuapp.com/api/addusers`, {
+            let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addusers`, {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': ' application/json',
@@ -124,7 +124,7 @@ const Saveuser = () => {
     const update = async (e) => {
         e.preventDefault()
         let data = { updatebyid: true, id, name, email, address, city, phone, pincode, state }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/user`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -157,7 +157,7 @@ const Saveuser = () => {
     }
     const getUser = async () => {
         let data = { id, searchbyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/user`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

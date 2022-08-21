@@ -23,7 +23,7 @@ const Allorders = ({ orders }) => {
   }
   const searchOrder = async () => {
     let data = { id: search, searchbyid: true }
-    let res = await fetch(`https://codeswere.herokuapp.com/api/order`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/order`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': ' application/json',

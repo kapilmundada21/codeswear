@@ -26,7 +26,7 @@ const Allusers = ({ users }) => {
     }
     const searchUser = async () => {
         let data = { id: search, searchbyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/user`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -51,7 +51,7 @@ const Allusers = ({ users }) => {
     }
     const deleteUser = async (userId) => {
         let data = { id: userId, deletebyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/user`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

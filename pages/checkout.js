@@ -28,7 +28,7 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
 
     const fetchUser = async (token) => {
         const data = { token };
-        let a = await fetch(`https://codeswere.herokuapp.com/api/getuser`, {
+        let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
     const submitForm = async (e) => {
         e.preventDefault()
         const data = { cart, subtotal, name, email, address, phone, pincode, city, state };
-        let a = await fetch(`https://codeswere.herokuapp.com/api/pretransation`, {
+        let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransation`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -20,7 +20,7 @@ const Allproduct = ({ products }) => {
     }
     const searchProduct = async () => {
         let data = { id: search, searchbyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/product`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -45,7 +45,7 @@ const Allproduct = ({ products }) => {
     }
     const deleteProduct = async (productId) => {
         let data = { id: productId, deletebyid: true }
-        let res = await fetch(`https://codeswere.herokuapp.com/api/product`, {
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
