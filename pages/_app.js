@@ -91,7 +91,7 @@ function MyApp({ Component, pageProps }) {
     let a = JSON.parse(localStorage.getItem('myUser'))
     if(a){
       let data = { userExist: true, email:a.email }
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+      let res = await fetch(`https://codeswere.herokuapp.com/api/getuser`, {
           method: 'POST', // or 'PUT'
           headers: {
               'Content-Type': ' application/json',
@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps }) {
     let a = JSON.parse(localStorage.getItem('myAdmin'))
     if(a){
       let data = { adminExist: true, email:a.email }
-      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
+      let res = await fetch(`https://codeswere.herokuapp.com/api/admin`, {
           method: 'POST', // or 'PUT'
           headers: {
               'Content-Type': ' application/json',

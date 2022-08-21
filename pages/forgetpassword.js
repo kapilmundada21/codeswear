@@ -32,7 +32,7 @@ const Forgetpassword = () => {
     const sendRestEmail = async (e) => {
         e.preventDefault()
         let data = { email, sendMail: true }
-        let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/forgetpasswordapi`, {
+        let a = await fetch(`https://codeswere.herokuapp.com/api/forgetpasswordapi`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -90,7 +90,7 @@ const Forgetpassword = () => {
         let token = router.query.token;
         if (password == cpassword) {
             let data = { token, password, sendMail: false }
-            let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/forgetpasswordapi`, {
+            let a = await fetch(`https://codeswere.herokuapp.com/api/forgetpasswordapi`, {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': ' application/json',

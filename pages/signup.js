@@ -35,7 +35,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = { name, email, password }
-        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signupapi`, {
+        let res = await fetch(`https://codeswere.herokuapp.com/api/signupapi`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

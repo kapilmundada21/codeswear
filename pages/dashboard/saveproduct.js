@@ -77,7 +77,7 @@ const Addproduct = () => {
     const add = async (e) => {
         e.preventDefault()
         const data = { title, slug, description, imgurl, category, size, color, price, availableQty }
-        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addproducts`, {
+        let res = await fetch(`https://codeswere.herokuapp.com/api/addproducts`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -111,7 +111,7 @@ const Addproduct = () => {
     const update = async (e) => {
         e.preventDefault()
         let data = { updatebyid: true, id, title, slug, description, imgurl, category, size, color, price, availableQty }
-        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
+        let res = await fetch(`https://codeswere.herokuapp.com/api/product`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',
@@ -144,7 +144,7 @@ const Addproduct = () => {
     }
     const getProduct = async () => {
         let data = { id, searchbyid: true }
-        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
+        let res = await fetch(`https://codeswere.herokuapp.com/api/product`, {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': ' application/json',

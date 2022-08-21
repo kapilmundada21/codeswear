@@ -22,7 +22,7 @@ const Productanalysis = ({ products }) => {
   }
   const searchProduct = async () => {
     let data = { id: search, searchbyid: true }
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
+    let res = await fetch(`https://codeswere.herokuapp.com/api/product`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': ' application/json',
