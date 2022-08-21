@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Order from '../models/order';
 import mongoose from "mongoose";
 import Link from 'next/link'
-import { AiFillPrinter } from 'react-icons/Ai';
+import { AiFillPrinter } from 'react-icons/ai';
 import { useReactToPrint } from 'react-to-print';
 import Invoice from '../components/Invoice';
 

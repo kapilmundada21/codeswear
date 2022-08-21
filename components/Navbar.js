@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsCartPlusFill, BsFillCartCheckFill } from 'react-icons/bs';
-import { AiFillCloseCircle, AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/Ai';
+import { AiFillCloseCircle, AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import { MdAccountCircle } from 'react-icons/md';
 import { FaBars } from 'react-icons/fa';
 

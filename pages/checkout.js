@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/Ai';
+import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
 import Product from "../models/Product"
 import mongoose from "mongoose";
