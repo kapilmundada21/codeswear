@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
-import Product from "../models/Product"
+import Product from "../models/product"
 import mongoose from "mongoose";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

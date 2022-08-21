@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import Product from '../../models/Product';
+import Product from '../../models/product';
 import mongoose from "mongoose";
 import Error from 'next/error'
 import { ToastContainer, toast } from 'react-toastify';

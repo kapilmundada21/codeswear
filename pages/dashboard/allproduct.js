@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import Product from "../../models/Product"
+import Product from "../../models/product"
 import mongoose from "mongoose";
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';

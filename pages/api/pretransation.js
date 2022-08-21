@@ -1,5 +1,5 @@
 import connectDb from "../../middleware/mongoose"
-import Product from "../../models/Product"
+import Product from "../../models/product"
 import Order from "../../models/order"
 import mongoose from "mongoose";
 

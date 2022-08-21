@@ -1,7 +1,7 @@
 // import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Product from "../models/Product"
+import Product from "../models/product"
 import mongoose from "mongoose";
 
 const Tshirts = ({ products }) => {
