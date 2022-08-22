@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
-const AdminLogin = ({setadmin}) => {
+const AdminLogin = ({ setadmin }) => {
     const router = useRouter()
     useEffect(() => {
         let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
         try {
             if (myAdmin) {
-              router.push('/')
+                router.push('/')
             }
-          } catch (error) {
+        } catch (error) {
             if (myAdmin.token) {
-              router.push('/')
+                router.push('/')
             }
-          }
+        }
     }, [])
-    
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const onchangeHandler = (e) => {
@@ -41,9 +42,9 @@ const AdminLogin = ({setadmin}) => {
         let response = await res.json()
         setEmail('')
         setPassword('')
-        localStorage.setItem('myAdmin', JSON.stringify({token : response.token, email: response.email}))
-        setadmin({token : response.token, email: response.email})
-        if(response.success){
+        localStorage.setItem('myAdmin', JSON.stringify({ token: response.token, email: response.email }))
+        setadmin({ token: response.token, email: response.email })
+        if (response.success) {
             toast.success('Logged-in Sucessfully!', {
                 position: "top-center",
                 autoClose: 3000,
@@ -57,7 +58,7 @@ const AdminLogin = ({setadmin}) => {
                 router.push("/dashboard/")
             }, 1000);
         }
-        else{
+        else {
             toast.error(response.error, {
                 position: "top-center",
                 autoClose: 3000,
@@ -73,20 +74,20 @@ const AdminLogin = ({setadmin}) => {
     return (
         <div>
             <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <ToastContainer
+                    position="top-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <div className="max-w-md w-full space-y-8">
-                    <div>
-                    <ToastContainer
-                            position="top-center"
-                            autoClose={3000}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                        />
-                        <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
+                    <div className=''>
+                        <center><Image src="/favicon.ico" height={50} width={50} alt="logo" /></center>
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Admin Login</h2>
                     </div>
                     <form className="mt-8 space-y-6" onSubmit={handleSubmit} method="POST">
@@ -97,7 +98,7 @@ const AdminLogin = ({setadmin}) => {
                             </div>
                             <div>
                                 <label htmlFor="password" className="sr-only">Password</label>
-                                <input value={password} onChange={onchangeHandler}id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+                                <input value={password} onChange={onchangeHandler} id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
                             </div>
                         </div>
 

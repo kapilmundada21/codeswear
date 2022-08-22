@@ -188,35 +188,35 @@ const Myaccount = () => {
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 md:mr-4 w-full md:w-1/2">
                 <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                <input onChange={handelChange} value={name} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input onChange={handelChange} value={name} type="text" id="name" name="name" autoComplete="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                <input type="email" required id="email" name="email" onChange={handelChange} value={email} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                <input type="email" required id="email" name="email" onChange={handelChange} value={email} autoComplete="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
               </div>
             </div>
             <div className="pb-4">
               <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
-              <textarea id="address" name="address" onChange={handelChange} value={address} rows="2" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+              <textarea id="address" name="address" onChange={handelChange} value={address} rows="2" autoComplete="address" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
             </div>
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 md:mr-4 w-full md:w-1/2">
                 <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
-                <input type="phone" id="phone" name="phone" onChange={handelChange} value={phone} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="phone" id="phone" name="phone" onChange={handelChange} value={phone} autoComplete="phone" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
-                <input type="text" id="pincode" name="pincode" onChange={handelChange} value={pincode} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="text" id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 md:mr-4 w-full md:w-1/2">
                 <label htmlFor="city" className="leading-7 text-sm text-gray-600">City</label>
-                <input type="text" id="city" name="city" onChange={handelChange} value={city} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="text" id="city" name="city" onChange={handelChange} value={city} autoComplete="city" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
-                <input type="text" id="state" name="state" onChange={handelChange} value={state} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="text" id="state" name="state" onChange={handelChange} value={state} autoComplete="state" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <button type='submit' className="flex mb-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Save Changes</button>
@@ -228,15 +228,15 @@ const Myaccount = () => {
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 w-full md:w-1/3">
                 <label htmlFor="password" className="leading-7 text-sm text-gray-600">Password</label>
-                <input onChange={handelChange} value={password} type="password" id="password" name="password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="current-password" />
+                <input onChange={handelChange} value={password} type="password" id="password" name="password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="password" />
               </div>
               <div className="mb-4 md:ml-8 w-full md:w-1/3">
                 <label htmlFor="npassword" className="leading-7 text-sm text-gray-600">New Password</label>
-                <input type="password" required id="npassword" name="npassword" onChange={handelChange} value={npassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="current-password" />
+                <input onChange={handelChange} value={npassword} type="password" required id="npassword" name="npassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="npassword" />
               </div>
               <div className="mb-4 md:ml-8 w-full md:w-1/3">
                 <label htmlFor="cpassword" className="leading-7 text-sm text-gray-600">Confirm New Password</label>
-                <input onChange={handelChange} value={cpassword} type="password" required id="cpassword" name="cpassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="current-password" />
+                <input onChange={handelChange} value={cpassword} type="password" required id="cpassword" name="cpassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" autoComplete="cpassword" />
               </div>
             </div>
             <button type='submit' className="flex text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Change Password</button>
