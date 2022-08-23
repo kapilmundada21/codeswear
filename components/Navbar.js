@@ -49,9 +49,9 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                     {admin.token && <Link href="/dashboard"><a><li>Dashboard</li></a></Link>}
                 </ul>
             </div>
-            <div ref={ref} className="flex space-x-2 md:space-x-6 cart items-center absolute right-4 md:right-7 top-4 md:text-lg cursor-pointer">
+            <div ref={ref} className="flex space-x-2 md:space-x-6 cart items-center absolute right-4 md:right-7 top-4 md:text-lg">
                 <span onClick={toggleDropdown} onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }}>
-                    {user.token && <MdAccountCircle className='md:text-xl' />}
+                    {user.token && <MdAccountCircle className='md:text-xl cursor-pointer' />}
                     {dropdown && <div className="absolute right-5 top-5 bg-white shadow-lg border font-semibold rounded-md text-sm px-4 w-28">
                         <ul>
                             <Link href="/myaccount"><a><li className='py-2 '>My Account</li></a></Link>
@@ -60,10 +60,10 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                         </ul>
                     </div>}
                 </span>
-                {admin.token && <button onClick={adminLogout} className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">Logout</button>}
-                {(!user.token && !admin.token) && <Link href={'/adminlogin'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">Admin Login</button></a></Link>}
+                {admin.token && <button onClick={adminLogout} className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm"><a>Logout</a></button>}
+                {(!user.token && !admin.token) && <Link href={'/adminlogin'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">Admin</button></a></Link>}
                 {(!user.token && !admin.token) && <Link href={'/login'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">Login</button></a></Link>}
-                <BsCartPlusFill onClick={toggleCart} />
+                <BsCartPlusFill onClick={toggleCart} className='cursor-pointer' />
             </div>
             <div ref={refSidebar} className="w-52 p-4 h-[100vh] absolute top-24 md:top-16 left-0 bg-white shadow-xl z-10 transform transition-transform -translate-x-full">
                 <ul className=''>
