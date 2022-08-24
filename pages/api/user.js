@@ -9,6 +9,12 @@ const handler = async (req, res) => {
         } catch (error) {
             
         }
+
+        if (req.body.deletebyemail) {
+            let p = await User.deleteOne({ email: req.body.email })
+            res.status(200).json({ sucess: true })
+            return
+        }
         
         if (userById) {
             if (req.body.searchbyid) { 

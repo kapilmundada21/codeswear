@@ -36,12 +36,15 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
     }
     return (
         <div className='md:flex p-4 shadow-md fixed top-0 right-0 w-[99vw] bg-white z-10'>
-            <div className="logo flex items-center">
-                {admin.token && <FaBars onClick={toggleSidebar} className='md:hidden mx-2 cursor-pointer' />}
-                <Link href="/"><a><Image src="/vercel.svg" height={20} width={100} alt="logo"></Image></a></Link>
+            <div className="logo flex items-center space-x-3">
+                <FaBars onClick={toggleSidebar} className='md:hidden cursor-pointer' />
+                <Link href="/"><a className='items-center space-x-1'>
+                    <Image src="/favicon.ico" height={20} width={20} alt="logo" className='transform translate-y-1 z-20' />
+                    <span className='text-lg font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
+                </a></Link>
             </div>
             <div className="nav">
-                <ul className='flex text-center space-x-3 justify-center mt-2 md:mt-0 md:ml-20 md:space-x-4'>
+                <ul className='hidden md:flex text-center space-x-3 justify-center mt-2 md:mt-0 md:ml-20 md:space-x-4'>
                     <Link href="/"><a><li>Home</li></a></Link>
                     <Link href="/"><a><li>About</li></a></Link>
                     <Link href="/tshirts"><a><li>T-Shirts</li></a></Link>
@@ -56,7 +59,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                         <ul>
                             <Link href="/myaccount"><a><li className='py-2 '>My Account</li></a></Link>
                             <Link href="/orders"><a><li className='py-2 '>Orders</li></a></Link>
-                            <li onClick={logout} className='py-2 '>Logout</li>
+                            <li onClick={logout} className='py-2 cursor-pointer'>Logout</li>
                         </ul>
                     </div>}
                 </span>
@@ -65,17 +68,25 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                 {(!user.token && !admin.token) && <Link href={'/login'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">Login</button></a></Link>}
                 <BsCartPlusFill onClick={toggleCart} className='cursor-pointer' />
             </div>
-            <div ref={refSidebar} className="w-52 p-4 h-[100vh] absolute top-24 md:top-16 left-0 bg-white shadow-xl z-10 transform transition-transform -translate-x-full">
+            <div ref={refSidebar} className="w-52 p-4 h-[100vh] absolute top-16 md:top-16 left-0 bg-white shadow-xl z-10 transform transition-transform -translate-x-full">
                 <ul className=''>
-                    <Link href={'/dashboard/'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Dashboard</li></a></Link>
-                    <Link href={'/dashboard/allproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Products</li></a></Link>
-                    <Link href={'/dashboard/saveproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Products</li></a></Link>
-                    <Link href={'/dashboard/allusers'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Users</li></a></Link>
-                    <Link href={'/dashboard/saveuser'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add User</li></a></Link>
-                    <Link href={'/dashboard/alladmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Admins</li></a></Link>
-                    <Link href={'/dashboard/saveadmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Admin</li></a></Link>
-                    <Link href={'/dashboard/allorders'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Orders</li></a></Link>
-                    <Link href={'/dashboard/productAnalysis'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Product Analysis</li></a></Link>
+                    <div>
+                        <Link href="/"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Home</li></a></Link>
+                        <Link href="/"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>About</li></a></Link>
+                        <Link href="/tshirts"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>T-Shirts</li></a></Link>
+                        <Link href="/contactus"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Contact Us</li></a></Link>
+                    </div>
+                    {admin.token && <div>
+                        <Link href={'/dashboard/'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Dashboard</li></a></Link>
+                        <Link href={'/dashboard/allproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Products</li></a></Link>
+                        <Link href={'/dashboard/saveproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Products</li></a></Link>
+                        <Link href={'/dashboard/allusers'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Users</li></a></Link>
+                        <Link href={'/dashboard/saveuser'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add User</li></a></Link>
+                        <Link href={'/dashboard/alladmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Admins</li></a></Link>
+                        <Link href={'/dashboard/saveadmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Admin</li></a></Link>
+                        <Link href={'/dashboard/allorders'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Orders</li></a></Link>
+                        <Link href={'/dashboard/productAnalysis'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Product Analysis</li></a></Link>
+                    </div>}
                 </ul>
             </div>
             <div ref={ref} className="shopCart absolute top-0 right-0 w-74 h-[100vh] transform transition-transform translate-x-full bg-[#ebeaea] shadow-xl p-10">

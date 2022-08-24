@@ -167,6 +167,41 @@ const Myaccount = () => {
     setCpassword('')
   }
 
+  const deleteUser = async () => {
+    let data = { email: email, deletebyemail: true }
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': ' application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    let response = await res.json()
+    if (response.sucess) {
+      toast.success('Account deleted Sucessfully!!', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      router.push("/")
+    }
+    else {
+      toast.error(response.error, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
   return (
     <div className='mx-auto'>
       <ToastContainer
@@ -202,11 +237,11 @@ const Myaccount = () => {
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 md:mr-4 w-full md:w-1/2">
                 <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
-                <input type="phone" id="phone" name="phone" onChange={handelChange} value={phone} autoComplete="phone" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="number" id="phone" name="phone" onChange={handelChange} value={phone} autoComplete="phone" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
-                <input type="text" id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="number" id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <div className="flex flex-col md:flex-row">
@@ -242,6 +277,10 @@ const Myaccount = () => {
             <button type='submit' className="flex text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Change Password</button>
           </div>
         </form>
+        <div className="my-4">
+          <h2 className='font-semibold text-xl'>3. Delete Account</h2>
+          <button onClick={deleteUser} className="flex m-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">Delete Account</button>
+        </div>
       </div>
     </div>
   )

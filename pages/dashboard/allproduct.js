@@ -122,31 +122,27 @@ const Allproduct = ({ products }) => {
                                 {Object.keys(products).length === 0 && <p className='my-32'>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
                                 <div className="flex flex-wrap justify-evenly md:justify-center my-8 -m-4">
                                     {!product && Object.keys(products).reverse().map((item) => {
-                                        return <div key={products[item]._id} className="py-4 md:p-4">
-                                            <div className="border-2 shadow-lg p-4 h-full flex sm:flex-row flex-col items-center justify-center text-center sm:text-left text-xs md:text-base">
-                                                <div className='ml-3 space-y-2 transform translate-x-24 md:hidden text-xl font-bold'>
-                                                    <Link href={`/dashboard/saveproduct?id=${products[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteProduct(products[item]._id) }} className='text-2xl cursor-pointer -m-1 md:m-0' />
+                                        return <div key={products[item]._id} className="mx-6 py-2 md:p-4">
+                                            <div className="border-2 shadow-lg p-2 md:p-4 h-full flex flex-row items-center text-left text-xs md:text-base">
+                                                <div className="w-20 md:w-44 flex-shrink-0 rounded-lg object-cover object-center">
+                                                    <Image height={150} width={150} src={products[item].img} alt="product" />
                                                 </div>
-                                                <div className="flex-shrink-0 rounded-lg object-cover object-center -mt-8 md:mt-0 sm:mb-0 mb-4">
-                                                    <Image alt="product" height={150} width={150} src={products[item].img} className="" />
-                                                </div>
-                                                <div className="flex-grow sm:pl-6">
-                                                    <h2 className="title-font font-medium text-sm md:text-lg text-gray-900">ID : {products[item]._id}</h2>
-                                                    <h3 className="text-gray-500 my-1 space-x-4">
+                                                <div className="flex-grow ml-2 md:m-0">
+                                                    <h2 className="title-font font-medium text-xs md:text-lg text-gray-900">ID : {products[item]._id}</h2>
+                                                    <h3 className="text-gray-500 my-1 space-x-2 md:space-x-4">
                                                         <span>{products[item].category}</span>
                                                         <span>{products[item].title}</span>
                                                         <span>({products[item].size}, {products[item].color})</span>
                                                     </h3>
-                                                    <div className='flex mb-1 space-x-4 justify-center md:justify-start'>
+                                                    <div className='flex mb-1 space-x-4 justify-start'>
                                                         <h3 className="text-gray-500">Price : {products[item].price}</h3>
                                                         <h3 className="text-gray-500">Quantity : {products[item].availableQty}</h3>
                                                     </div>
                                                     <h3 className="text-gray-500">Slug : {products[item].slug}</h3>
                                                 </div>
-                                                <div className='hidden md:block ml-4 space-y-2 transform md:-translate-y-12 text-xl font-bold'>
+                                                <div className='ml-2 md:ml-4 space-y-2 transform -translate-y-6 md:-translate-y-12 text-xs md:text-xl font-bold'>
                                                     <Link href={`/dashboard/saveproduct?id=${products[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteProduct(products[item]._id) }} className='text-2xl cursor-pointer -m-1' />
+                                                    <MdDeleteForever onClick={() => { deleteProduct(products[item]._id) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
                                                 </div>
                                             </div>
                                         </div>

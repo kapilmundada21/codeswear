@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
 
   const logout = ()=>{
     localStorage.removeItem('myUser')
-    setUser({token : null,user : null})
+    setUser({token : null,email : null})
     setKey(Math.random())
     toast.success('Logged out Sucessfully!', {
       position: "top-center",
