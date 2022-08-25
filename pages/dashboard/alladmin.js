@@ -114,7 +114,7 @@ const Alladmin = ({ admins }) => {
                         draggable
                         pauseOnHover
                     />
-                    <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
+                    <div className='flex flex-col md:flex-row -mt-3 mb-6 md:my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                         <h1 className='text-xl md:text-2xl font-bold'>All Admins</h1>
                         <div className='flex md:space-x-8'>
                             <div className="flex space-x-1">

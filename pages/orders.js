@@ -33,8 +33,8 @@ const Orders = ({ order }) => {
     }
   }, [])
   return (
-    <div className='container mx-auto'>
-      <h1 className='font-semibold text-xl text-center mt-8 mb-6'>My Orders</h1>
+    <div className='container mx-auto min-h-screen'>
+      <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:mt-8 md:mb-6'>My Orders</h1>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 inline-block min-w-full sm:px-6 mx-4 lg:px-8">
@@ -59,7 +59,7 @@ const Orders = ({ order }) => {
                 </tr>
               </thead>
               <tbody>
-                {!flag && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No Orders</td></tr>}
+                {!flag && <tr><td className='text-center font-semibold' height={50} colSpan={4}>No Orders</td></tr>}
                 {myOrder.map((item) => {
                   return <tr key={item._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

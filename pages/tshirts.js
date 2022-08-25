@@ -8,7 +8,7 @@ const Tshirts = ({ products }) => {
     return (
         <div>
             <section className="text-gray-600 body-font">
-                <div className="container px-5 py-12 mx-auto">
+                <div className="container px-5 py-4 md:py-12 mx-auto">
                     <div className="flex flex-wrap -m-4 justify-evenly md:justify-center">
                         {Object.keys(products).length === 0 && <p>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
                         {Object.keys(products).map((item) => {
@@ -27,12 +27,12 @@ const Tshirts = ({ products }) => {
                                         {products[item].size.includes('XXL') && <span className='border border-gray-300 text-sm md:text-base px-1 mx-1'>XXL</span>}
                                     </div>
                                     <div className="mt-1">
-                                        {products[item].color.includes('red') && <button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
-                                        {products[item].color.includes('blue') && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
-                                        {products[item].color.includes('black') && <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
-                                        {products[item].color.includes('yellow') && <button className="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
-                                        {products[item].color.includes('green') && <button className="border-2 border-gray-300 ml-1 bg-green-700 rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
-                                        {products[item].color.includes('purple') && <button className="border-2 border-gray-300 ml-1 bg-purple-700 rounded-full w-4 md:w-6 h-4 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('red') && <button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('blue') && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('black') && <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('yellow') && <button className="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('green') && <button className="border-2 border-gray-300 ml-1 bg-green-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
+                                        {products[item].color.includes('purple') && <button className="border-2 border-gray-300 ml-1 bg-purple-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
                                     </div>
                                 </div>
                                 <p className="mt-1 text-sm md:text-base">₹{products[item].price}</p>

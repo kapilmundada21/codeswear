@@ -5,11 +5,13 @@ import { BsCartPlusFill, BsFillCartCheckFill } from 'react-icons/bs';
 import { AiFillCloseCircle, AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import { MdAccountCircle } from 'react-icons/md';
 import { FaBars } from 'react-icons/fa';
+import { useRouter } from 'next/router'
 
 const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, removeFromCart, subtotal }) => {
     const ref = useRef();
     const refSidebar = useRef();
     const [dropdown, setDropdown] = useState(false)
+    const router = useRouter();
     let toggleCart = () => {
         if (ref.current.classList.contains("translate-x-full")) {
             ref.current.classList.remove("translate-x-full");
@@ -38,18 +40,18 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
         <div className='md:flex p-4 shadow-md fixed top-0 right-0 w-[99vw] bg-white z-10'>
             <div className="logo flex items-center space-x-3">
                 <FaBars onClick={toggleSidebar} className='md:hidden cursor-pointer' />
-                <Link href="/"><a className='items-center space-x-1'>
-                    <Image src="/favicon.ico" height={20} width={20} alt="logo" className='transform translate-y-1 z-20' />
+                <Link href="/"><a className='flex items-center space-x-1'>
+                    <Image src="/favicon.ico" height={20} width={20} alt="logo" />
                     <span className='text-lg font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
                 </a></Link>
             </div>
             <div className="nav">
                 <ul className='hidden md:flex text-center space-x-3 justify-center mt-2 md:mt-0 md:ml-20 md:space-x-4'>
-                    <Link href="/"><a><li>Home</li></a></Link>
-                    <Link href="/"><a><li>About</li></a></Link>
-                    <Link href="/tshirts"><a><li>T-Shirts</li></a></Link>
-                    <Link href="/contactus"><a><li>Contact Us</li></a></Link>
-                    {admin.token && <Link href="/dashboard"><a><li>Dashboard</li></a></Link>}
+                    <Link href="/"><a><li className={`${router.pathname == '/' ?'font-semibold':''}`}>Home</li></a></Link>
+                    <Link href="/"><a><li className={`${router.pathname == '/about' ?'font-semibold':''}`}>About</li></a></Link>
+                    <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'font-semibold':''}`}>T-Shirts</li></a></Link>
+                    <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'font-semibold':''}`}>Contact Us</li></a></Link>
+                    {admin.token && <Link href="/dashboard"><a><li className={`${router.pathname == '/dashboard' ?'font-semibold':''}`}>Dashboard</li></a></Link>}
                 </ul>
             </div>
             <div ref={ref} className="flex space-x-2 md:space-x-6 cart items-center absolute right-4 md:right-7 top-4 md:text-lg">
@@ -71,21 +73,21 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
             <div ref={refSidebar} className="w-52 p-4 h-[100vh] absolute top-16 md:top-16 left-0 bg-white shadow-xl z-10 transform transition-transform -translate-x-full">
                 <ul className=''>
                     <div>
-                        <Link href="/"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Home</li></a></Link>
-                        <Link href="/"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>About</li></a></Link>
-                        <Link href="/tshirts"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>T-Shirts</li></a></Link>
-                        <Link href="/contactus"><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Contact Us</li></a></Link>
+                        <Link href="/"><a><li className={`${router.pathname == '/' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Home</li></a></Link>
+                        <Link href="/"><a><li className={`${router.pathname == '/about' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>About</li></a></Link>
+                        <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>T-Shirts</li></a></Link>
+                        <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Contact Us</li></a></Link>
                     </div>
                     {admin.token && <div>
-                        <Link href={'/dashboard/'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Dashboard</li></a></Link>
-                        <Link href={'/dashboard/allproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Products</li></a></Link>
-                        <Link href={'/dashboard/saveproduct'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Products</li></a></Link>
-                        <Link href={'/dashboard/allusers'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Users</li></a></Link>
-                        <Link href={'/dashboard/saveuser'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add User</li></a></Link>
-                        <Link href={'/dashboard/alladmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Admins</li></a></Link>
-                        <Link href={'/dashboard/saveadmin'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Add Admin</li></a></Link>
-                        <Link href={'/dashboard/allorders'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>All Orders</li></a></Link>
-                        <Link href={'/dashboard/productAnalysis'}><a><li className='w-full pl-4 py-2 hover:bg-indigo-400'>Product Analysis</li></a></Link>
+                        <Link href={'/dashboard/'}><a><li className={`${router.pathname == '/dashboard/' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Dashboard</li></a></Link>
+                        <Link href={'/dashboard/allproduct'}><a><li className={`${router.pathname == '/dashboard/allproduct' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Products</li></a></Link>
+                        <Link href={'/dashboard/saveproduct'}><a><li className={`${router.pathname == '/dashboard/saveproduct' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Add Products</li></a></Link>
+                        <Link href={'/dashboard/allusers'}><a><li className={`${router.pathname == '/dashboard/allusers' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Users</li></a></Link>
+                        <Link href={'/dashboard/saveuser'}><a><li className={`${router.pathname == '/dashboard/saveuser' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Add User</li></a></Link>
+                        <Link href={'/dashboard/alladmin'}><a><li className={`${router.pathname == '/dashboard/alladmin' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Admins</li></a></Link>
+                        <Link href={'/dashboard/saveadmin'}><a><li className={`${router.pathname == '/dashboard/saveadmin' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Add Admin</li></a></Link>
+                        <Link href={'/dashboard/allorders'}><a><li className={`${router.pathname == '/dashboard/allorders' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Orders</li></a></Link>
+                        <Link href={'/dashboard/productAnalysis'}><a><li className={`${router.pathname == '/dashboard/productAnalysis' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Product Analysis</li></a></Link>
                     </div>}
                 </ul>
             </div>

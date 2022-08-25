@@ -197,7 +197,7 @@ const Addproduct = () => {
                         pauseOnHover
                     />
                     <form method='POST' onSubmit={id ? update : add}>
-                        <h1 className='text-2xl font-bold my-8 mx-4 md:mx-24'>{id ? 'Update' : 'Add'}  Product</h1>
+                        <h1 className='text-2xl font-bold -mt-3 mb-6 md:my-8 mx-4 md:mx-24'>{id ? 'Update' : 'Add'}  Product</h1>
                         <div className='px-8 md:px-28'>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">

@@ -216,7 +216,7 @@ const Myaccount = () => {
         pauseOnHover
       />
       <div className='mx-4 md:mx-24'>
-        <h1 className='text-2xl font-bold text-center my-8'>My Account</h1>
+        <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:my-8'>My Account</h1>
         <form onSubmit={handelSubmit}>
           <h2 className='font-semibold text-xl'>1. Details</h2>
           <div className='p-4'>
@@ -241,17 +241,17 @@ const Myaccount = () => {
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
-                <input type="number" id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete="pincode" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="number" id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete="PIN code" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <div className="flex flex-col md:flex-row">
               <div className="mb-4 md:mr-4 w-full md:w-1/2">
                 <label htmlFor="city" className="leading-7 text-sm text-gray-600">City</label>
-                <input type="text" id="city" name="city" onChange={handelChange} value={city} autoComplete="city" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="text" id="city" name="city" onChange={handelChange} value={city} autoComplete="City" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
               <div className="mb-4 w-full md:w-1/2">
                 <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
-                <input type="text" id="state" name="state" onChange={handelChange} value={state} autoComplete="state" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="text" id="state" name="state" onChange={handelChange} value={state} autoComplete="State" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
               </div>
             </div>
             <button type='submit' className="flex mb-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">Save Changes</button>

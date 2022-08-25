@@ -14,7 +14,7 @@ const Orderr = ({ order }) => {
     return (
         <div>
             <section className="text-gray-600 body-font">
-                <div className="container px-6 md:px-12 py-8 mx-auto">
+                <div className="container px-6 md:px-12 -pt-4 md:py-8 mx-auto">
                     <div className="lg:w-11/12 mx-auto flex flex-wrap">
                         <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
                             <h2 className="text-xs md:text-sm title-font text-gray-500 tracking-widest">{process.env.NEXT_PUBLIC_WEBSITE_NAME}.com</h2>

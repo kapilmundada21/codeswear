@@ -114,7 +114,7 @@ const Allusers = ({ users }) => {
                         draggable
                         pauseOnHover
                     />
-                    <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
+                    <div className='flex flex-col md:flex-row -mt-3 mb-6 md:my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                         <h1 className='text-xl md:text-2xl font-bold'>All Users</h1>
                         <div className='flex md:space-x-8'>
                             <div className="flex space-x-1">
@@ -128,7 +128,7 @@ const Allusers = ({ users }) => {
                     <div className="flex flex-col py-4">
                         <div className="overflow-x-auto sm:-mx-6 lg:mx-0">
                             <div className="py-2 inline-block min-w-full sm:px-3 lg:px-8">
-                                <table className="min-w-full" ref={allorders}>
+                                <table className="min-w-full mx-4 md:mx-0" ref={allorders}>
                                     <thead className="bg-white border-b">
                                         <tr>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
@@ -167,7 +167,7 @@ const Allusers = ({ users }) => {
                                         {Object.keys(users).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No Users!!</td></tr>}
                                         {!user && Object.keys(users).reverse().map((item) => {
                                             return <tr key={users[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap text-center">
                                                     {parseInt(item) + 1}
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">

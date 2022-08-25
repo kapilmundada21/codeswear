@@ -109,7 +109,7 @@ const Allproduct = ({ products }) => {
                         draggable
                         pauseOnHover
                     />
-                    <div className='flex flex-col md:flex-row my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
+                    <div className='flex flex-col md:flex-row -mt-3 mb-6 md:my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                         <h1 className='text-xl md:text-2xl font-bold'>All Products</h1>
                         <div className='flex space-x-1'>
                             <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -122,7 +122,7 @@ const Allproduct = ({ products }) => {
                                 {Object.keys(products).length === 0 && <p className='my-32'>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
                                 <div className="flex flex-wrap justify-evenly md:justify-center my-8 -m-4">
                                     {!product && Object.keys(products).reverse().map((item) => {
-                                        return <div key={products[item]._id} className="mx-6 py-2 md:p-4">
+                                        return <div key={products[item]._id} className="w-11/12 md:w-1/2 mx-6 py-2 md:p-4">
                                             <div className="border-2 shadow-lg p-2 md:p-4 h-full flex flex-row items-center text-left text-xs md:text-base">
                                                 <div className="w-20 md:w-44 flex-shrink-0 rounded-lg object-cover object-center">
                                                     <Image height={150} width={150} src={products[item].img} alt="product" />
