@@ -25,7 +25,7 @@ const Alladmin = ({ admins }) => {
         }
     }
     const searchadmin = async () => {
-        let data = { id: search, searchbyid: true }
+        let data = { id: search, search, searchbyid: true }
         let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -36,6 +36,17 @@ const Alladmin = ({ admins }) => {
         let response = await res.json()
         if (response.sucess) {
             setAdmin(response.admin)
+            if(response.admin.length == 0){
+                toast.error('Admin not found!', {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });  
+              }
         }
         else {
             toast.error(response.error, {
@@ -150,7 +161,7 @@ const Alladmin = ({ admins }) => {
                                     </thead>
                                     <tbody>
                                         {Object.keys(admins).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No admins!!</td></tr>}
-                                        {!admin && Object.keys(admins).reverse().map((item) => {
+                                        {(!admin || admin.length == 0) && Object.keys(admins).reverse().map((item) => {
                                             return <tr key={admins[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                                 <td align='center' className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {parseInt(item) + 1}
@@ -170,24 +181,26 @@ const Alladmin = ({ admins }) => {
                                                 </td>
                                             </tr>
                                         })}
-                                        {admin && <tr key={admin._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                            <td align='center' className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {'1'}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <Link href={`/dashboard/saveadmin?id=${admin._id}`} ><a><FaEdit /></a></Link>
-                                                <MdDeleteForever onClick={() => { deleteadmin(admin._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {admin._id}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {admin.name}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {admin.email}
-                                            </td>
-                                        </tr>}
+                                        {admin && Object.keys(admin).reverse().map((item) => {
+                                            return <tr key={admin[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                                <td align='center' className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {parseInt(item) + 1}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    <Link href={`/dashboard/saveadmin?id=${admin[item]._id}`} ><a><FaEdit /></a></Link>
+                                                    <MdDeleteForever onClick={() => { deleteadmin(admin[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {admin[item]._id}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {admin[item].name}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {admin[item].email}
+                                                </td>
+                                            </tr>
+                                        })}
                                     </tbody>
                                 </table>
                             </div>

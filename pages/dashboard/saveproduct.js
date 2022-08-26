@@ -143,7 +143,7 @@ const Addproduct = () => {
         }
     }
     const getProduct = async () => {
-        let data = { id, searchbyid: true }
+        let data = { id, getproduct: true }
         let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -202,45 +202,45 @@ const Addproduct = () => {
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="title" className="leading-7 text-sm text-gray-600">Title</label>
-                                    <input onChange={handelChange} value={title} type="text" id="title" name="title" autoComplete='title' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required />
+                                    <input onChange={handelChange} value={title} type="text" id="title" name="title" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="slug" className="leading-7 text-sm text-gray-600">Slug</label>
-                                    <input type="text" required id="slug" name="slug" onChange={handelChange} value={slug} autoComplete='slug' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="text" required id="slug" name="slug" onChange={handelChange} value={slug} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="pb-4">
                                 <label htmlFor="description" className="leading-7 text-sm text-gray-600">Description</label>
-                                <textarea id="description" required name="description" onChange={handelChange} value={description} rows="2" autoComplete='description' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                                <textarea id="description" required name="description" onChange={handelChange} value={description} rows="2" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                             </div>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="imgurl" className="leading-7 text-sm text-gray-600">Image URL</label>
-                                    <input type="text" required id="imgurl" name="imgurl" onChange={handelChange} value={imgurl} autoComplete='imgurl' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="text" required id="imgurl" name="imgurl" onChange={handelChange} value={imgurl} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="category" className="leading-7 text-sm text-gray-600">Category</label>
-                                    <input type="text" required id="category" name="category" onChange={handelChange} value={category} autoComplete='category' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="text" required id="category" name="category" onChange={handelChange} value={category} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="size" className="leading-7 text-sm text-gray-600">Size</label>
-                                    <input type="text" required id="size" name="size" onChange={handelChange} value={size} autoComplete='size' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="text" required id="size" name="size" onChange={handelChange} value={size} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="color" className="leading-7 text-sm text-gray-600">Colour</label>
-                                    <input type="text" required id="color" name="color" onChange={handelChange} value={color} autoComplete='color' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="text" required id="color" name="color" onChange={handelChange} value={color} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="price" className="leading-7 text-sm text-gray-600">Price</label>
-                                    <input type="number" required id="price" name="price" onChange={handelChange} value={price} autoComplete='price' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="number" required id="price" name="price" onChange={handelChange} value={price} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="availableQty" className="leading-7 text-sm text-gray-600">Available Quantity</label>
-                                    <input type="number" required id="availableQty" name="availableQty" onChange={handelChange} value={availableQty} autoComplete='availableQty' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input type="number" required id="availableQty" name="availableQty" onChange={handelChange} value={availableQty} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <button type='submit' className="flex mr-auto disabled:bg-indigo-400 text-white items-center bg-indigo-500 border-0 py-2 px-2  md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">{id ? 'Update' : 'Add'} Product</button>

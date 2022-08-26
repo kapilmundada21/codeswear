@@ -45,6 +45,12 @@ const Orders = ({ order }) => {
                     Order ID
                   </th>
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Name
+                  </th>
+                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Email
+                  </th>
+                  <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     Status
                   </th>
                   <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -66,6 +72,12 @@ const Orders = ({ order }) => {
                       {item._id}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {item.name}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {item.email}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {item.status}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -78,7 +90,7 @@ const Orders = ({ order }) => {
                       <Link href={`/order?id=${item._id}`}><a>details</a></Link>
                     </td>
                   </tr>
-                })}
+                })} 
 
               </tbody>
             </table>

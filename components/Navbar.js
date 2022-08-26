@@ -79,7 +79,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                         <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Contact Us</li></a></Link>
                     </div>
                     {admin.token && <div>
-                        <Link href={'/dashboard/'}><a><li className={`${router.pathname == '/dashboard/' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Dashboard</li></a></Link>
+                        <Link href={'/dashboard/'}><a><li className={`${router.pathname == '/dashboard' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Dashboard</li></a></Link>
                         <Link href={'/dashboard/allproduct'}><a><li className={`${router.pathname == '/dashboard/allproduct' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Products</li></a></Link>
                         <Link href={'/dashboard/saveproduct'}><a><li className={`${router.pathname == '/dashboard/saveproduct' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Add Products</li></a></Link>
                         <Link href={'/dashboard/allusers'}><a><li className={`${router.pathname == '/dashboard/allusers' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>All Users</li></a></Link>

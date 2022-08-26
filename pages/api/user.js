@@ -3,11 +3,38 @@ import connectDb from "../../middleware/mongoose"
 
 const handler = async (req, res) => {
     if (req.method == 'POST') {
-        let userById,userByid,userByName,userByEmail,userByCity,userByState;
+        let userById, searchById, search;
         try {
             userById = await User.findOne({ _id: req.body.id })
+            searchById = await User.find({ _id: req.body.id })
         } catch (error) {
-            
+            search = await User.find({
+                $or: [
+                    {
+                        name: req.body.search
+                    },
+                    {
+                        email: req.body.search
+                    },
+                    {
+                        phone: req.body.search
+                    },
+                    {
+                        pincode: req.body.search
+                    },
+                    {
+                        city: req.body.search
+                    },
+                    {
+                        state: req.body.search
+                    }
+                ],
+            })     
+        }
+        
+        if (search) {
+            res.status(200).json({ sucess: true, user: search})
+            return
         }
 
         if (req.body.deletebyemail) {
@@ -15,9 +42,13 @@ const handler = async (req, res) => {
             res.status(200).json({ sucess: true })
             return
         }
-        
+
         if (userById) {
-            if (req.body.searchbyid) { 
+            if (req.body.searchbyid) {
+                res.status(200).json({ sucess: true, user: searchById })
+                return
+            }
+            if (req.body.getuser) {
                 res.status(200).json({ sucess: true, user: userById })
                 return
             }
@@ -41,32 +72,10 @@ const handler = async (req, res) => {
                 return
             }
         }
-        else{
+        else {
             res.status(200).json({ sucess: false, error: 'User not found!' })
             return
         }
-        // if(userByid || userByName || userByEmail || userByCity || userByState){
-        //     if (req.body.search && userByid) { 
-        //         res.status(200).json({ sucess: true, user: userByid })
-        //         return
-        //     }
-        //     if (req.body.search && userByName) { 
-        //         res.status(200).json({ sucess: true, user: userByName })
-        //         return
-        //     }
-        //     if (req.body.search && userByEmail) { 
-        //         res.status(200).json({ sucess: true, user: userByEmail })
-        //         return
-        //     }
-        //     if (req.body.search && userByCity) { 
-        //         res.status(200).json({ sucess: true, user: userByCity })
-        //         return
-        //     }
-        //     if (req.body.search && userByState) { 
-        //         res.status(200).json({ sucess: true, user: userByState })
-        //         return
-        //     }
-        // }
 
     }
     else {

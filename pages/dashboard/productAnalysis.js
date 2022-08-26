@@ -21,7 +21,7 @@ const Productanalysis = ({ products }) => {
     }
   }
   const searchProduct = async () => {
-    let data = { id: search, searchbyid: true }
+    let data = { id: search, searchbyid: true, search }
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
       method: 'POST', // or 'PUT'
       headers: {
@@ -32,6 +32,17 @@ const Productanalysis = ({ products }) => {
     let response = await res.json()
     if (response.sucess) {
       setMyproduct(response.product)
+      if(response.product.length == 0){
+        toast.error('Product not found!', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });  
+      }
     }
     else {
       toast.error(response.error, {
@@ -80,7 +91,7 @@ const Productanalysis = ({ products }) => {
             <h1 className='text-xl md:text-2xl font-bold'>Product Analysis</h1>
             <div className='flex md:space-x-8'>
               <div className="flex space-x-1">
-                <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded bproduct bproduct-gray-300 focus:bproduct-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <input type="search" id="search" name="search" onChange={handelChange} value={search} placeholder='search...' className="w-2/3 md:w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 <button onClick={searchProduct} className="text-white bg-indigo-500 bproduct-0 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm"><FaSearchPlus /> </button>
               </div>
               <button onClick={handlePrint} className='flex items-center text-white bg-indigo-500 bproduct-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm'><FiDownload className='text-l cursor-pointer mr-1' /> Download</button>
@@ -96,16 +107,10 @@ const Productanalysis = ({ products }) => {
                         Sr.no.
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        product ID
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Category
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Title
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Slug
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Size
@@ -113,38 +118,38 @@ const Productanalysis = ({ products }) => {
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Colour
                       </th>
+                      {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
+                        Cost
+                      </th> */}
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Date
+                        Sell
                       </th>
+                      {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
+                        Profit
+                      </th> */}
+                      {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
+                        Purchase Date
+                      </th> */}
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Amount
+                        Selling Date
                       </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Quantity
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Description
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {Object.keys(products).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No products</td></tr>}
-                    {!myproduct && Object.keys(products).reverse().map((item) => {
+                    {(!myproduct || myproduct.length == 0) && Object.keys(products).reverse().map((item) => {
                       return <tr key={products[item]._id} className="bg-white bproduct-b transition duration-300 ease-in-out hover:bg-gray-100">
                         <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {parseInt(item) + 1}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          {products[item]._id}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {products[item].category}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {products[item].title}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          {products[item].slug}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {products[item].size}
@@ -155,54 +160,42 @@ const Productanalysis = ({ products }) => {
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {new Date(products[item].createdAt).toUTCString()}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-3 py-4 text-center whitespace-nowrap">
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           ₹{products[item].price}
                         </td>
-                        <td className="text-sm text-gray-900 font-light px-3 py-4 text-center whitespace-nowrap">
-                          {products[item].availableQty}
-                        </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          {products[item].desc}
+                          {products[item].availableQty}
                         </td>
                       </tr>
                     })}
-                    {myproduct && <tr key={myproduct._id} className="bg-white bproduct-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {'1'}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct._id}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.category}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.title}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.slug}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.size}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.color}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {new Date(myproduct.createdAt).toUTCString()}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 text-center whitespace-nowrap">
-                        ₹{myproduct.price}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 text-center whitespace-nowrap">
-                        {myproduct.availableQty}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myproduct.desc}
-                      </td>
-                    </tr>
-                    }
-
+                    {myproduct && Object.keys(myproduct).reverse().map((item) => {
+                      return <tr key={myproduct[item]._id} className="bg-white bproduct-b transition duration-300 ease-in-out hover:bg-gray-100">
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {parseInt(item) + 1}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myproduct[item].category}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myproduct[item].title}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myproduct[item].size}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myproduct[item].color}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {new Date(myproduct[item].createdAt).toUTCString()}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          ₹{myproduct[item].price}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myproduct[item].availableQty}
+                        </td>
+                      </tr>
+                    })}
                   </tbody>
                 </table>
               </div>

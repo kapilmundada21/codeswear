@@ -22,7 +22,7 @@ const Allorders = ({ orders }) => {
     }
   }
   const searchOrder = async () => {
-    let data = { id: search, searchbyid: true }
+    let data = { id: search, searchbyid: true, search }
     let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/order`, {
       method: 'POST', // or 'PUT'
       headers: {
@@ -33,6 +33,17 @@ const Allorders = ({ orders }) => {
     let response = await res.json()
     if (response.sucess) {
       setMyOrder(response.order)
+      if(response.order.length == 0){
+        toast.error("Order not found!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
     else {
       toast.error(response.error, {
@@ -96,6 +107,12 @@ const Allorders = ({ orders }) => {
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-center">
                         Sr.no.
                       </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-center">
+                        Name
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-center">
+                        Email
+                      </th>
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Order ID
                       </th>
@@ -115,10 +132,16 @@ const Allorders = ({ orders }) => {
                   </thead>
                   <tbody>
                     {Object.keys(orders).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No Orders</td></tr>}
-                    {!myOrder && Object.keys(orders).reverse().map((item) => {
+                    {(!myOrder || myOrder.length == 0) && Object.keys(orders).reverse().map((item) => {
                       return <tr key={orders[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                         <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {parseInt(item) + 1}
+                        </td>
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {orders[item].name}
+                        </td>
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {orders[item].email}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {orders[item]._id}
@@ -137,28 +160,34 @@ const Allorders = ({ orders }) => {
                         </td>
                       </tr>
                     })}
-                    {myOrder && <tr key={myOrder._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                      <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {'1'}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myOrder._id}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myOrder.status}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {new Date(myOrder.createdAt).toUTCString()}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        {myOrder.amount}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                        <Link href={`/order?id=${myOrder._id}`}><a>details</a></Link>
-                      </td>
-                    </tr>
-                    }
-
+                    {myOrder && Object.keys(myOrder).reverse().map((item) => {
+                      return <tr key={myOrder[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {parseInt(item) + 1}
+                        </td>
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myOrder[item].name}
+                        </td>
+                        <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myOrder[item].email}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myOrder[item]._id}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myOrder[item].status}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {new Date(myOrder[item].createdAt).toUTCString()}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          {myOrder[item].amount}
+                        </td>
+                        <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                          <Link href={`/order?id=${myOrder[item]._id}`}><a>details</a></Link>
+                        </td>
+                      </tr>
+                    })}
                   </tbody>
                 </table>
               </div>

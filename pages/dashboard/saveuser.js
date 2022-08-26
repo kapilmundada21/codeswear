@@ -156,7 +156,7 @@ const Saveuser = () => {
         }
     }
     const getUser = async () => {
-        let data = { id, searchbyid: true }
+        let data = { id, getuser: true }
         let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -213,45 +213,45 @@ const Saveuser = () => {
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                                    <input onChange={handelChange} value={name} type="text" id="name" name="name" autoComplete='name' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" required />
+                                    <input onChange={handelChange} value={name} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" required />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="email" className="leading-7 text-sm text-gray-600">E-mail</label>
-                                    <input type="email" required id="email" name="email" onChange={handelChange} value={email} readOnly={id ? true : false} autoComplete='email' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="email" required id="email" name="email" onChange={handelChange} value={email} readOnly={id ? true : false} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="pb-4">
                                 <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
-                                <textarea id="address" required name="address" onChange={handelChange} value={address} rows="2" autoComplete='address' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out"></textarea>
+                                <textarea id="address" required name="address" onChange={handelChange} value={address} rows="2" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out"></textarea>
                             </div>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
-                                    <input type="text" required id="phone" name="phone" onChange={handelChange} value={phone} autoComplete='phone' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="text" required id="phone" name="phone" onChange={handelChange} value={phone} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="pincode" className="leading-7 text-sm text-gray-600">Pincode</label>
-                                    <input type="text" required id="pincode" name="pincode" onChange={handelChange} value={pincode} autoComplete='pincode' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="text" required id="pincode" name="pincode" onChange={handelChange} value={pincode} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="city" className="leading-7 text-sm text-gray-600">City</label>
-                                    <input type="text" required id="city" name="city" onChange={handelChange} value={city} autoComplete='city' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="text" required id="city" name="city" onChange={handelChange} value={city} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
-                                    <input type="text" required id="state" name="state" onChange={handelChange} value={state} autoComplete='state' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="text" required id="state" name="state" onChange={handelChange} value={state} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>
                             {!id && <div className="flex flex-col md:flex-row -mb-4">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="npassword" className="leading-7 text-sm text-gray-600">New Password</label>
-                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} autoComplete='npassword' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="cpassword" className="leading-7 text-sm text-gray-600">Confirm Password</label>
-                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} autoComplete='cpassword' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>}
                             {(npassword != cpassword) &&

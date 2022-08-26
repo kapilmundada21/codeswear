@@ -25,7 +25,7 @@ const Allusers = ({ users }) => {
         }
     }
     const searchUser = async () => {
-        let data = { id: search, searchbyid: true }
+        let data = { id: search, search, searchbyid: true }
         let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/user`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -36,6 +36,17 @@ const Allusers = ({ users }) => {
         let response = await res.json()
         if (response.sucess) {
             setUser(response.user)
+            if(response.user.length == 0){
+                toast.error('User not found!', {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });  
+              }
         }
         else {
             toast.error(response.error, {
@@ -165,7 +176,7 @@ const Allusers = ({ users }) => {
                                     </thead>
                                     <tbody>
                                         {Object.keys(users).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No Users!!</td></tr>}
-                                        {!user && Object.keys(users).reverse().map((item) => {
+                                        {(!user || user.length == 0) && Object.keys(users).reverse().map((item) => {
                                             return <tr key={users[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap text-center">
                                                     {parseInt(item) + 1}
@@ -201,39 +212,41 @@ const Allusers = ({ users }) => {
 
                                             </tr>
                                         })}
-                                        {user && <tr key={user._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {'1'}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                <Link href={`/dashboard/saveuser?id=${user._id}`} ><a><FaEdit /></a></Link>
-                                                <MdDeleteForever onClick={() => { deleteUser(user._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user._id}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.name}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.email}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.phone}
-                                            </td>
-                                            <td className="text-sm md:text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap md:whitespace-normal">
-                                                {user.address}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.pincode}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.city}
-                                            </td>
-                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                {user.state}
-                                            </td>
-                                        </tr>}
+                                        {user && Object.keys(user).map((item) => {
+                                            return <tr key={user[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap text-center">
+                                                    {parseInt(item) + 1}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    <Link href={`/dashboard/saveuser?id=${user[item]._id}`} ><a><FaEdit /></a></Link>
+                                                    <MdDeleteForever onClick={() => { deleteUser(user[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item]._id}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].name}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].email}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].phone}
+                                                </td>
+                                                <td className="text-sm md:text-xs text-gray-900 font-light px-3 py-4 whitespace-nowrap md:whitespace-normal">
+                                                    {user[item].address}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].pincode}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].city}
+                                                </td>
+                                                <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    {user[item].state}
+                                                </td>
+                                            </tr>
+                                        })}
                                     </tbody>
                                 </table>
                             </div>

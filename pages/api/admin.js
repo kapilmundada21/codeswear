@@ -15,15 +15,34 @@ const handler = async (req, res) => {
             }
         }
 
-        let adminById;
+        let adminById, searchById, search;
         try {
             adminById = await Admin.findOne({ _id: req.body.id })
+            searchById = await Admin.find({ _id: req.body.id })
         } catch (error) {
+            search = await Admin.find({
+                $or: [
+                    {
+                        name: req.body.search
+                    },
+                    {
+                        email: req.body.search
+                    }
+                ],
+            }) 
+        }
 
+        if (search) {
+            res.status(200).json({ sucess: true, admin: search})
+            return
         }
 
         if (adminById) {
             if (req.body.searchbyid) {
+                res.status(200).json({ sucess: true, admin: searchById })
+                return
+            }
+            if (req.body.getadmin) {
                 res.status(200).json({ sucess: true, admin: adminById })
                 return
             }
