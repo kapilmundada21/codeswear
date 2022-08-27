@@ -122,7 +122,10 @@ const Productanalysis = ({ products }) => {
                         Cost
                       </th> */}
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Sell
+                        Selling Date
+                      </th>
+                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
+                        Selling Price
                       </th>
                       {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Profit
@@ -130,9 +133,7 @@ const Productanalysis = ({ products }) => {
                       {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Purchase Date
                       </th> */}
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
-                        Selling Date
-                      </th>
+                      
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Quantity
                       </th>
