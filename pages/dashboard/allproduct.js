@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import Product from "../../models/product"
-import mongoose from "mongoose";
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,8 +8,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar';
 
-const Allproduct = ({ products }) => {
+const Allproduct = () => {
     const router = useRouter()
+    const [products, setProducts] = useState([])
+    const [page, setPage] = useState(0)
+    const [pageSize, setPageSize] = useState(10)
+    const [loadFlag, setLoadFlag] = useState(false)
     const [search, setSearch] = useState('')
     const [product, setProduct] = useState()
     const handelChange = (e) => {
@@ -89,8 +91,28 @@ const Allproduct = ({ products }) => {
             });
         }
     }
+    const fetchp = async ()=>{
+        let data = { fetchProduct : true, page, pageSize }
+        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': ' application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        let response = await res.json()
+        if(response.body.length == 0){
+            setLoadFlag(false)
+        }
+        else{
+            setProducts(products.concat(response.body))
+            setPage(page + pageSize)
+            setLoadFlag(true)
+        }
+    }
 
     useEffect(() => {
+        fetchp()
         let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
         try {
             if (!myAdmin) {
@@ -132,7 +154,7 @@ const Allproduct = ({ products }) => {
                             <div className="flex flex-wrap md:mx-4 -m-4 justify-center">
                                 {Object.keys(products).length === 0 && <p className='my-32'>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}
                                 <div className="flex flex-wrap justify-evenly md:justify-center my-8 -m-4">
-                                    {(!product || product.length == 0) && Object.keys(products).reverse().map((item) => {
+                                    {(!product || product.length == 0) && Object.keys(products).map((item) => {
                                         return <div key={products[item]._id} className="w-11/12 md:w-1/2 mx-6 md:mx-0 py-2 md:p-4">
                                             <div className="border-2 shadow-lg p-2 md:p-4  flex flex-row items-center text-left text-xs md:text-base">
                                                 <div className="w-20 md:w-44 flex-shrink-0 rounded-lg object-cover object-center">
@@ -159,7 +181,6 @@ const Allproduct = ({ products }) => {
                                         </div>
                                     })}
                                     {product && Object.keys(product).reverse().map((item) => {
-                                        console.log(product.length);
                                         return <div key={product[item]._id} className={`w-11/12 md:w-${product.length > 1 ? '1/2' : 'full'} mx-6 md:mx-0 py-2 md:p-4`}>
                                             <div className="border-2 shadow-lg p-2 md:p-4  flex flex-row items-center text-left text-xs md:text-base">
                                                 <div className="w-20 md:w-44 flex-shrink-0 rounded-lg object-cover object-center">
@@ -186,7 +207,7 @@ const Allproduct = ({ products }) => {
                                         </div>
                                     })}
                                 </div>
-
+                                <button onClick={fetchp} disabled={!loadFlag} type='button' className="text-white bg-indigo-500 disabled:hidden border-0 py-2 px-3 focus:outline-none rounded text-xs md:text-sm">Load More</button>
                             </div>
                         </div>
                     </section>
@@ -195,17 +216,6 @@ const Allproduct = ({ products }) => {
             </div>
         </>
     )
-}
-
-export async function getServerSideProps(context) {
-    if (!mongoose.connections[0].readyState) {
-        await mongoose.connect(process.env.MONGO_URI)
-
-    }
-    let products = await Product.find()
-    return {
-        props: { products: JSON.parse(JSON.stringify(products)) }, // will be passed to
-    }
 }
 
 export default Allproduct

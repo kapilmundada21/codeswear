@@ -37,6 +37,12 @@ const handler = async (req, res) => {
             return
         }
 
+        if(req.body.fetchProduct){
+            let products = await Product.find().skip(req.body.page).limit(req.body.pageSize)
+            res.status(200).json({body:products})
+            return
+        }
+
         if (productById) {
             if (req.body.searchbyid) {
                 res.status(200).json({ sucess: true, product: searchById })
