@@ -90,7 +90,7 @@ const Checkout = ({ products, clearCart, cart, addToCart, removeFromCart, subtot
         let b = await a.json()
         if (b.sucess) {
             setOid(b.oid)
-            clearCart
+            clearCart()
             setModelOpen(true)
         }
         else{
