@@ -14,6 +14,7 @@ import mongoose from "mongoose";
 const Allproduct = ({ products }) => {
     const router = useRouter()
     const [productId, setProductId] = useState('')
+    const [productName, setProductName] = useState('')
     const [search, setSearch] = useState('')
     const [product, setProduct] = useState()
     const [modelOpen, setModelOpen] = useState(false)
@@ -119,7 +120,7 @@ const Allproduct = ({ products }) => {
         <>
             <div className='flex mb-16'>
                 <Sidebar />
-                {modelOpen && <Modal closeModal={closeModal} message="Confirm Delete" sucessButton="Delete" modalSucess={modalSucess} />}
+                {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete Product: ${productName}`} sucessButton="Delete" modalSucess={modalSucess} />}
 
                 <div className='w-full'>
                     <ToastContainer
@@ -166,7 +167,7 @@ const Allproduct = ({ products }) => {
                                                 </div>
                                                 <div className='ml-2 md:ml-4 space-y-2 transform -translate-y-6 md:-translate-y-12 text-xs md:text-xl font-bold'>
                                                     <Link href={`/dashboard/saveproduct?id=${products[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { setProductId(products[item]._id); setModelOpen(true) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
+                                                    <MdDeleteForever onClick={() => { setProductId(products[item]._id); setProductName(products[item].title); setModelOpen(true); }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +193,7 @@ const Allproduct = ({ products }) => {
                                                 </div>
                                                 <div className='ml-2 md:ml-4 space-y-2 transform -translate-y-6 md:-translate-y-12 text-xs md:text-xl font-bold'>
                                                     <Link href={`/dashboard/saveproduct?id=${product[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { setProductId(product[item]._id); setModelOpen(true) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
+                                                    <MdDeleteForever onClick={() => { setProductId(product[item]._id); setProductName(products[item].title); setModelOpen(true) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
                                                 </div>
                                             </div>
                                         </div>

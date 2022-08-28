@@ -17,6 +17,7 @@ const Alladmin = ({ admins }) => {
     const [search, setSearch] = useState('')
     const [admin, setAdmin] = useState()
     const [adminId, setAdminId] = useState('')
+    const [adminName, setAdminName] = useState('')
     const allorders = useRef();
     const [modelOpen, setModelOpen] = useState(false)
 
@@ -123,7 +124,7 @@ const Alladmin = ({ admins }) => {
         <>
             <div className='flex mb-8'>
                 <Sidebar />
-                {modelOpen && <Modal closeModal={closeModal} message="Confirm Delete" sucessButton="Delete" modalSucess={modalSucess} />}
+                {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete Admin: ${adminName}`} sucessButton="Delete" modalSucess={modalSucess} />}
 
                 <div className='w-full'>
                     <ToastContainer
@@ -180,7 +181,7 @@ const Alladmin = ({ admins }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveadmin?id=${admins[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { setAdminId(admins[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setAdminId(admins[item]._id); setAdminName(admins[item].name); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {admins[item]._id}
@@ -200,7 +201,7 @@ const Alladmin = ({ admins }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveadmin?id=${admin[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { setAdminId(admin[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setAdminId(admin[item]._id); setAdminName(admin[item].name); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {admin[item]._id}
