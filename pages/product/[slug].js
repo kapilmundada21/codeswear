@@ -74,7 +74,7 @@ const Slug = ({ error,addToCart, buyNow, product, variant }) => {
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Color</span>
-                                    <div className="mt-1">
+                                    <div className="">
                                         {(product.color == 'red') && <button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
                                         {(product.color == 'blue') && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
                                         {(product.color == 'black') && <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-5 md:w-6 h-5 md:h-6 focus:outline-none"></button>}
@@ -90,7 +90,7 @@ const Slug = ({ error,addToCart, buyNow, product, variant }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex">
+                            <div className="flex item-center">
                                 {(product.availableQty>0) && <span className="title-font font-medium text-2xl text-gray-900">₹{product.price}</span>}
                                 {(product.availableQty<=0) && <span className="title-font font-medium text-2xl text-gray-900">Out of Stock</span>}
                                 <button disabled={product.availableQty<=0} onClick={() => { addToCart(product.slug, product.availableQty, product.price, product.title, product.size, product.color) }} className="flex ml-4 md:ml-16 text-white bg-indigo-500 border-0 py-1 px-2 md:px-3 md:py-2 focus:outline-none hover:bg-indigo-600 disabled:bg-indigo-300 rounded text-sm md:text-lg">Add to Cart</button>
