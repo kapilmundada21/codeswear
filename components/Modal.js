@@ -5,7 +5,7 @@ const Modal = ( props ) => {
     return (
         <div>
             <div className='fixed top-0 right-0 left-0 bottom-0 opacity-50 bg-black z-50'></div>
-            <div className='space-y-4 shadow-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] bg-white p-4 min-w-72 md:min-w-fit z-50'>
+            <div className='space-y-4 shadow-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] bg-white p-4 min-w-[80vw] md:min-w-fit z-50'>
                 <AiOutlineClose onClick={props.closeModal} className='text-red-700 font-bold absolute right-4 cursor-pointer' />
                 <p className="pt-2 pr-4">{props.message}</p>
                 <div className="flex justify-between">
