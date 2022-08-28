@@ -33,7 +33,7 @@ const Orders = ({ order }) => {
     }
   }, [])
   return (
-    <div className='container mx-auto min-h-screen'>
+    <div className='container mx-auto min-h-screen mb-8'>
       <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:mt-8 md:mb-6'>My Orders</h1>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -67,9 +67,9 @@ const Orders = ({ order }) => {
               <tbody>
                 {!flag && <tr><td className='text-center font-semibold' height={50} colSpan={4}>No Orders</td></tr>}
                 {myOrder.map((item) => {
-                  return <tr key={item._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                  return <tr key={item.oid} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      {item._id}
+                      {item.oid}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       {item.name}
@@ -87,7 +87,7 @@ const Orders = ({ order }) => {
                       {new Date(item.createdAt).toDateString()}
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                      <Link href={`/order?id=${item._id}`}><a>details</a></Link>
+                      <Link href={`/order?id=${item.oid}`}><a>details</a></Link>
                     </td>
                   </tr>
                 })} 

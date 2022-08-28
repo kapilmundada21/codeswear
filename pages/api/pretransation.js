@@ -23,7 +23,9 @@ const handler = async (req, res) => {
         }
 
         // Initiate an order
+        let oid = Math.floor(Math.random() * Date.now());
         let order = new Order({
+            oid: oid,
             name: req.body.name,
             email: req.body.email,
             products: req.body.cart,
@@ -36,7 +38,7 @@ const handler = async (req, res) => {
         })
         await order.save()
 
-        res.status(200).json({ sucess: true})
+        res.status(200).json({ sucess: true ,oid})
     }
 }
 export default connectDb(handler);

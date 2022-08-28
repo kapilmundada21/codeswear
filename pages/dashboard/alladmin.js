@@ -10,12 +10,23 @@ import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar';
 import { FiDownload } from 'react-icons/fi';
 import { useReactToPrint } from 'react-to-print';
+import Modal from '../../components/Modal';
 
 const Alladmin = ({ admins }) => {
     const router = useRouter()
     const [search, setSearch] = useState('')
     const [admin, setAdmin] = useState()
+    const [adminId, setAdminId] = useState('')
     const allorders = useRef();
+    const [modelOpen, setModelOpen] = useState(false)
+
+    const closeModal = () => {
+        setModelOpen(false)
+    }
+    const modalSucess = () => {
+        deleteadmin(adminId)
+        setModelOpen(false)        
+    }
     const handlePrint = useReactToPrint({
         content: () => allorders.current,
     });
@@ -36,17 +47,17 @@ const Alladmin = ({ admins }) => {
         let response = await res.json()
         if (response.sucess) {
             setAdmin(response.admin)
-            if(response.admin.length == 0){
+            if (response.admin.length == 0) {
                 toast.error('Admin not found!', {
-                  position: "top-center",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });  
-              }
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
         else {
             toast.error(response.error, {
@@ -98,20 +109,21 @@ const Alladmin = ({ admins }) => {
     useEffect(() => {
         let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
         try {
-          if (!myAdmin) {
-            router.push('/')
-          }
+            if (!myAdmin) {
+                router.push('/')
+            }
         } catch (error) {
-          if (!myAdmin.token) {
-            router.push('/')
-          }
+            if (!myAdmin.token) {
+                router.push('/')
+            }
         }
-      }, [])
+    }, [])
 
     return (
         <>
-            <div className='flex'>
+            <div className='flex mb-8'>
                 <Sidebar />
+                {modelOpen && <Modal closeModal={closeModal} message="Confirm Delete" sucessButton="Delete" modalSucess={modalSucess} />}
 
                 <div className='w-full'>
                     <ToastContainer
@@ -168,7 +180,7 @@ const Alladmin = ({ admins }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveadmin?id=${admins[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteadmin(admins[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setAdminId(admins[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {admins[item]._id}
@@ -188,7 +200,7 @@ const Alladmin = ({ admins }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveadmin?id=${admin[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteadmin(admin[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setAdminId(admin[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {admin[item]._id}

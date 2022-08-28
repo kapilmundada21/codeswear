@@ -155,7 +155,7 @@ const Saveadmin = () => {
 
     return (
         <>
-            <div className='flex'>
+            <div className='flex mb-8'>
                 <Sidebar />
 
                 <div className='w-full'>
@@ -180,17 +180,17 @@ const Saveadmin = () => {
                                 </div>
                                 <div className="mb-4 w-full md:w-1/2">
                                     <label htmlFor="email" className="leading-7 text-sm text-gray-600">E-mail</label>
-                                    <input type="email" required id="email" name="email" onChange={handelChange} value={email} readOnly={id ? true : false} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="email" required id="email" name="email" onChange={handelChange} value={email} autoComplete='email' readOnly={id ? true : false} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>
                             {!id && <div className="flex flex-col md:flex-row -mb-4">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="npassword" className="leading-7 text-sm text-gray-600">New Password</label>
-                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} autoComplete='new-password' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="cpassword" className="leading-7 text-sm text-gray-600">Confirm Password</label>
-                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} autoComplete='conform-password' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>}
                             {(npassword != cpassword) &&

@@ -5,8 +5,10 @@ import Product from "../models/product"
 import mongoose from "mongoose";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from '../components/Modal';
 
 const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
+    const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [address, setAddress] = useState('')
@@ -14,7 +16,15 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
     const [pincode, setPincode] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
-    const router = useRouter()
+    const [modelOpen, setModelOpen] = useState(false)
+    const [oid, setOid] = useState('')
+    const closeModal = () => {
+        setModelOpen(false)
+    }
+    const modalSucess = () => {
+        router.push(`${process.env.NEXT_PUBLIC_HOST}/order?id=${oid}`)
+    }
+
     useEffect(() => {
         let myUser = JSON.parse(localStorage.getItem('myUser'))
         try {
@@ -78,7 +88,11 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
             body: JSON.stringify(data),
         })
         let b = await a.json()
-        if (!b.sucess) {
+        if (b.sucess) {
+            setOid(b.oid)
+            setModelOpen(true)
+        }
+        else{
             toast.error('The price of some items in your cart have changed. Please try again', {
                 position: "top-center",
                 autoClose: 3000,
@@ -99,6 +113,7 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
     }
     return (
         <div className='container m-auto px-6 md:px-24'>
+            {modelOpen && <Modal closeModal={closeModal} message="Order Plased Sucessfully!!" sucessButton="Okay" modalSucess={modalSucess} singleButton={true} />}
             <ToastContainer
                 position="top-center"
                 autoClose={3000}
@@ -150,10 +165,10 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
                     </div>
                 </div>
                 <h2 className='font-semibold text-xl'>2. Checkout</h2>
-                <div className="shopCart md:px-8 py-4 mt-2">
+                <div className="shopCart md:px-8 py-4 mt-2 mb-16">
                     {Object.keys(cart).length == 0 && <div>Your Cart is Empty!</div>}
                     <div className="overflow-x-auto border-2 border-[#dad9d9]">
-                    {Object.keys(cart).length != 0 && <table className="min-w-full">
+                        {Object.keys(cart).length != 0 && <table className="min-w-full">
                             <thead className="bg-[#dad9d9] border-b">
                                 <tr>
                                     <th scope="col" className="text-sm md:text-lg font-medium text-gray-900 px-6 py-2 md:py-4 text-left">

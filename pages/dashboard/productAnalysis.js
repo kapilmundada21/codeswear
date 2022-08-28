@@ -72,7 +72,7 @@ const Productanalysis = ({ products }) => {
 
   return (
     <>
-      <div className='flex'>
+      <div className='flex mb-8'>
         <Sidebar />
 
         <div className='w-full'>

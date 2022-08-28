@@ -7,15 +7,25 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar';
+import Modal from '../../components/Modal';
+import Product from "../../models/product"
+import mongoose from "mongoose";
 
-const Allproduct = () => {
+const Allproduct = ({ products }) => {
     const router = useRouter()
-    const [products, setProducts] = useState([])
-    const [page, setPage] = useState(0)
-    const [pageSize, setPageSize] = useState(10)
-    const [loadFlag, setLoadFlag] = useState(false)
+    const [productId, setProductId] = useState('')
     const [search, setSearch] = useState('')
     const [product, setProduct] = useState()
+    const [modelOpen, setModelOpen] = useState(false)
+
+    const closeModal = () => {
+        setModelOpen(false)
+    }
+    const modalSucess = () => {
+        deleteProduct(productId)
+        setModelOpen(false)
+    }
+
     const handelChange = (e) => {
         if (e.target.name == 'search') {
             setSearch(e.target.value)
@@ -91,28 +101,8 @@ const Allproduct = () => {
             });
         }
     }
-    const fetchp = async ()=>{
-        let data = { fetchProduct : true, page, pageSize }
-        let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/product`, {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': ' application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        let response = await res.json()
-        if(response.body.length == 0){
-            setLoadFlag(false)
-        }
-        else{
-            setProducts(products.concat(response.body))
-            setPage(page + pageSize)
-            setLoadFlag(true)
-        }
-    }
 
     useEffect(() => {
-        fetchp()
         let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
         try {
             if (!myAdmin) {
@@ -127,8 +117,9 @@ const Allproduct = () => {
 
     return (
         <>
-            <div className='flex'>
+            <div className='flex mb-16'>
                 <Sidebar />
+                {modelOpen && <Modal closeModal={closeModal} message="Confirm Delete" sucessButton="Delete" modalSucess={modalSucess} />}
 
                 <div className='w-full'>
                     <ToastContainer
@@ -175,7 +166,7 @@ const Allproduct = () => {
                                                 </div>
                                                 <div className='ml-2 md:ml-4 space-y-2 transform -translate-y-6 md:-translate-y-12 text-xs md:text-xl font-bold'>
                                                     <Link href={`/dashboard/saveproduct?id=${products[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteProduct(products[item]._id) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
+                                                    <MdDeleteForever onClick={() => { setProductId(products[item]._id); setModelOpen(true) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
                                                 </div>
                                             </div>
                                         </div>
@@ -201,13 +192,12 @@ const Allproduct = () => {
                                                 </div>
                                                 <div className='ml-2 md:ml-4 space-y-2 transform -translate-y-6 md:-translate-y-12 text-xs md:text-xl font-bold'>
                                                     <Link href={`/dashboard/saveproduct?id=${product[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteProduct(product[item]._id) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
+                                                    <MdDeleteForever onClick={() => { setProductId(product[item]._id); setModelOpen(true) }} className='text-sm md:text-2xl cursor-pointer -m-0.5 md:-m-1' />
                                                 </div>
                                             </div>
                                         </div>
                                     })}
                                 </div>
-                                <button onClick={fetchp} disabled={!loadFlag} type='button' className="text-white bg-indigo-500 disabled:hidden border-0 py-2 px-3 focus:outline-none rounded text-xs md:text-sm">Load More</button>
                             </div>
                         </div>
                     </section>
@@ -216,6 +206,16 @@ const Allproduct = () => {
             </div>
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    if (!mongoose.connections[0].readyState) {
+        await mongoose.connect(process.env.MONGO_URI)
+    }
+    let products = await Product.find()
+    return {
+        props: { products: JSON.parse(JSON.stringify(products)) }, // will be passed to
+    }
 }
 
 export default Allproduct

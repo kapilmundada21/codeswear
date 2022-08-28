@@ -73,7 +73,7 @@ const Allorders = ({ orders }) => {
 
   return (
     <>
-      <div className='flex'>
+      <div className='flex mb-8'>
         <Sidebar />
 
         <div className='w-full'>
@@ -133,7 +133,7 @@ const Allorders = ({ orders }) => {
                   <tbody>
                     {Object.keys(orders).length === 0 && <tr><td className='text-center font-semibold' height={100} colSpan={3}>No Orders</td></tr>}
                     {(!myOrder || myOrder.length == 0) && Object.keys(orders).reverse().map((item) => {
-                      return <tr key={orders[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                      return <tr key={orders[item].oid} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                         <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {parseInt(item) + 1}
                         </td>
@@ -144,7 +144,7 @@ const Allorders = ({ orders }) => {
                           {orders[item].email}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          {orders[item]._id}
+                          {orders[item].oid}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {orders[item].status}
@@ -156,12 +156,12 @@ const Allorders = ({ orders }) => {
                           {orders[item].amount}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          <Link href={`/order?id=${orders[item]._id}`}><a>details</a></Link>
+                          <Link href={`/order?id=${orders[item].oid}`}><a>details</a></Link>
                         </td>
                       </tr>
                     })}
                     {myOrder && Object.keys(myOrder).reverse().map((item) => {
-                      return <tr key={myOrder[item]._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                      return <tr key={myOrder[item].oid} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                         <td align='center' className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {parseInt(item) + 1}
                         </td>
@@ -172,7 +172,7 @@ const Allorders = ({ orders }) => {
                           {myOrder[item].email}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          {myOrder[item]._id}
+                          {myOrder[item].oid}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                           {myOrder[item].status}
@@ -184,7 +184,7 @@ const Allorders = ({ orders }) => {
                           {myOrder[item].amount}
                         </td>
                         <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                          <Link href={`/order?id=${myOrder[item]._id}`}><a>details</a></Link>
+                          <Link href={`/order?id=${myOrder[item].oid}`}><a>details</a></Link>
                         </td>
                       </tr>
                     })}

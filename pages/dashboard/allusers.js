@@ -10,12 +10,23 @@ import { useRouter } from 'next/router'
 import Sidebar from '../../components/Sidebar';
 import { FiDownload } from 'react-icons/fi';
 import { useReactToPrint } from 'react-to-print';
+import Modal from '../../components/Modal';
 
 const Allusers = ({ users }) => {
     const router = useRouter()
     const [search, setSearch] = useState('')
+    const [userid, setUserid] = useState('')
     const [user, setUser] = useState()
-    const allorders = useRef();
+    const allorders = useRef();const [modelOpen, setModelOpen] = useState(false)
+
+    const closeModal = () => {
+        setModelOpen(false)
+    }
+    const modalSucess = () => {
+        deleteUser(userid)
+        setModelOpen(false)
+    }
+
     const handlePrint = useReactToPrint({
         content: () => allorders.current,
     });
@@ -110,7 +121,7 @@ const Allusers = ({ users }) => {
 
     return (
         <>
-            <div className='flex'>
+            <div className='flex mb-8'>
                 <Sidebar />
 
                 <div className='w-full'>
@@ -125,6 +136,8 @@ const Allusers = ({ users }) => {
                         draggable
                         pauseOnHover
                     />
+                    {modelOpen && <Modal closeModal={closeModal} message="Confirm Delete" sucessButton="Delete" modalSucess={modalSucess} />}
+    
                     <div className='flex flex-col md:flex-row -mt-3 mb-6 md:my-8 mx-4 md:mx-24 justify-between space-y-4 md:space-y-0'>
                         <h1 className='text-xl md:text-2xl font-bold'>All Users</h1>
                         <div className='flex md:space-x-8'>
@@ -183,7 +196,7 @@ const Allusers = ({ users }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveuser?id=${users[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteUser(users[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setUserid(users[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                     {users[item]._id}
@@ -219,7 +232,7 @@ const Allusers = ({ users }) => {
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                     <Link href={`/dashboard/saveuser?id=${user[item]._id}`} ><a><FaEdit /></a></Link>
-                                                    <MdDeleteForever onClick={() => { deleteUser(user[item]._id) }} className='text-xl cursor-pointer -m-1 mt-2' />
+                                                    <MdDeleteForever onClick={() => { setUserid(user[item]._id); setModelOpen(true) }} className='text-xl cursor-pointer -m-1 mt-2' />
                                                 </td>
                                                 <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                     {user[item]._id}

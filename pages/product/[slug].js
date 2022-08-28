@@ -15,7 +15,7 @@ const Slug = ({ error,addToCart, buyNow, product, variant }) => {
     }
     return (
         <div>
-            <section className="text-gray-600 body-font overflow-hidden">
+            <section className="text-gray-600 body-font overflow-hidden md:mb-32">
                 <div className="container px-5 md:mt-16 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <ToastContainer

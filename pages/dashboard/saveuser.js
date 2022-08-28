@@ -192,7 +192,7 @@ const Saveuser = () => {
 
     return (
         <>
-            <div className='flex'>
+            <div className='flex mb-8'>
                 <Sidebar />
 
                 <div className='w-full'>
@@ -247,16 +247,16 @@ const Saveuser = () => {
                             {!id && <div className="flex flex-col md:flex-row -mb-4">
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="npassword" className="leading-7 text-sm text-gray-600">New Password</label>
-                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="npassword" name="npassword" onChange={handelChange} value={npassword} autoComplete='new-password' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                                 <div className="mb-4 md:mr-4 w-full md:w-1/2">
                                     <label htmlFor="cpassword" className="leading-7 text-sm text-gray-600">Confirm Password</label>
-                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
+                                    <input type="password" id="cpassword" name="cpassword" onChange={handelChange} value={cpassword} autoComplete='conform-password' className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-states duration-200 ease-in-out" />
                                 </div>
                             </div>}
                             {(npassword != cpassword) &&
                                 <span className="text-red-500">password not match</span>}
-                            <button type='submit' className="flex mt-6 mr-auto disabled:bg-indigo-400 text-white items-center bg-indigo-500 border-0 py-2 px-2  md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">{id ? 'Update' : 'Add'} User</button>
+                            <button type='submit' autoComplete='password' className="flex mt-6 mr-auto disabled:bg-indigo-400 text-white items-center bg-indigo-500 border-0 py-2 px-2  md:px-4 focus:outline-none hover:bg-indigo-600 rounded text-sm">{id ? 'Update' : 'Add'} User</button>
                         </div>
                     </form>
                 </div>

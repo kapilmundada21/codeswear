@@ -203,7 +203,7 @@ const Myaccount = () => {
   }
 
   return (
-    <div className='mx-auto'>
+    <div className='mx-auto mb-12'>
       <ToastContainer
         position="top-center"
         autoClose={3000}
