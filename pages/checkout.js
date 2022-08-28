@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '../components/Modal';
 
-const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
+const Checkout = ({ products, clearCart, cart, addToCart, removeFromCart, subtotal }) => {
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -90,6 +90,7 @@ const Checkout = ({ products, cart, addToCart, removeFromCart, subtotal }) => {
         let b = await a.json()
         if (b.sucess) {
             setOid(b.oid)
+            clearCart
             setModelOpen(true)
         }
         else{
