@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from '../components/Modal';
 
 const Myaccount = () => {
+  const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
@@ -15,7 +17,16 @@ const Myaccount = () => {
   const [npassword, setNpassword] = useState('')
   const [cpassword, setCpassword] = useState('')
   const [token, setToken] = useState('')
-  const router = useRouter()
+  const [modelOpen, setModelOpen] = useState(false)
+
+  const closeModal = () => {
+      setModelOpen(false)
+  }
+  const modalSucess = () => {
+      deleteUser()
+      setModelOpen(false)        
+  }
+
   const handelChange = async (e) => {
     if (e.target.name == 'name') {
       setName(e.target.value)
@@ -204,6 +215,7 @@ const Myaccount = () => {
 
   return (
     <div className='mx-auto mb-12'>
+      {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete User`} sucessButton="Delete" modalSucess={modalSucess} />}
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -215,6 +227,7 @@ const Myaccount = () => {
         draggable
         pauseOnHover
       />
+
       <div className='mx-4 md:mx-24'>
         <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:my-8'>My Account</h1>
         <form onSubmit={handelSubmit}>
@@ -279,7 +292,7 @@ const Myaccount = () => {
         </form>
         <div className="my-4">
           <h2 className='font-semibold text-xl'>3. Delete Account</h2>
-          <button onClick={deleteUser} className="flex m-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">Delete Account</button>
+          <button onClick={() => { setModelOpen(true) }} className="flex m-4 text-white items-center bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">Delete Account</button>
         </div>
       </div>
     </div>
