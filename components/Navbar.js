@@ -54,9 +54,9 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                     {admin.token && <Link href="/dashboard"><a><li className={`${router.pathname == '/dashboard' ?'font-semibold':''}`}>Dashboard</li></a></Link>}
                 </ul>
             </div>
-            <div ref={ref} className="flex space-x-2 md:space-x-6 cart items-center absolute right-4 md:right-7 top-4 md:text-lg">
+            <div ref={ref} className="flex space-x-4 md:space-x-6 cart items-center absolute right-4 md:right-7 top-4 md:text-lg">
                 <span onClick={toggleDropdown} onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }}>
-                    {user.token && <MdAccountCircle className='md:text-xl cursor-pointer' />}
+                    {user.token && <MdAccountCircle className='text-lg md:text-xl cursor-pointer' />}
                     {dropdown && <div className="absolute right-5 top-5 bg-white shadow-lg border font-semibold rounded-md text-sm px-4 w-28">
                         <ul>
                             <Link href="/myaccount"><a><li className='py-2 '>My Account</li></a></Link>
