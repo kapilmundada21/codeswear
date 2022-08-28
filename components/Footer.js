@@ -6,26 +6,26 @@ const Footer = () => {
     return (
         <div className='border-t-2'>
             <footer className="mt-8 md:mt-12 text-gray-600 body-font">
-                <div className="flex justify-center p-4 text-xs md:text-base">
+                <div className="flex justify-center p-4 text-sm md:text-base">
                     <div className="flex flex-col md:flex-row justify-center md:justify-evenly space-y-8 md:space-y-0 md:py-4">
                         <div className="w-full md:w-1/4 flex flex-col justify-center transform md:-translate-y-6 space-y-2">
                             <div className="flex space-x-1 md:space-x-2 justify-center">
                                 <div className='w-4 h-4 md:w-7 md:h-7 mt-1 md:mt-0.5'><Image src="/favicon.ico" height={30} width={30} alt="logo" /></div>
-                                <span className='text-base md:text-2xl font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
+                                <span className='text-lg md:text-2xl font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
                             </div>
                             <div className="text-center">
                                 {process.env.NEXT_PUBLIC_WEBSITE_NAME} is an E-Commerce. 
                             </div>
                         </div>
                         <div className="w-full md:w-1/4 text-center">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm md:text-lg mb-3">About Us</h2>
+                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-lg md:text-lg mb-3">About Us</h2>
                             <p>
                                 We are students from Gokhale education society RH Sapat College of Engineering.
                                 We are currently pursuing degree in Computer Engineering.
                             </p>
                         </div>
                         <div className="w-full md:w-1/4 text-center">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm md:text-lg mb-3">Quick Links</h2>
+                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-lg md:text-lg mb-3">Quick Links</h2>
                             <nav className="list-none space-y-2">
                                 <li>
                                     <Link href='/' ><a className="text-gray-600 hover:text-gray-800">Home</a></Link>
@@ -42,7 +42,7 @@ const Footer = () => {
                             </nav>
                         </div>
                         <div className="w-full md:w-1/4 text-center">
-                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm md:text-lg mb-3">Contact Info</h2>
+                            <h2 className="title-font font-medium text-gray-900 tracking-widest text-lg md:text-lg mb-3">Contact Info</h2>
                             <p>
                                 Nashik, Maharashtra, India <br />
                                 Pincode - 422010 <br />

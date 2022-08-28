@@ -14,7 +14,7 @@ export default function Home() {
 
       {/* <Image src="/" width={100} height={20} alt="logo" /> */}
 
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font mb-12">
         <div className="container px-5 md:py-24 mx-auto">
           <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">{process.env.NEXT_PUBLIC_WEBSITE_NAME}</h1>
