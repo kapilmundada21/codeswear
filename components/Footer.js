@@ -10,17 +10,17 @@ const Footer = () => {
                     <div className="flex flex-col md:flex-row justify-center md:justify-evenly space-y-8 md:space-y-0 md:py-4">
                         <div className="w-full md:w-1/4 flex flex-col justify-center transform md:-translate-y-6 space-y-2">
                             <div className="flex space-x-1 md:space-x-2 justify-center">
-                                <div className='w-4 h-4 md:w-7 md:h-7 mt-1 md:mt-0.5'><Image src="/favicon.ico" height={30} width={30} alt="logo" /></div>
-                                <span className='text-lg md:text-2xl font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
+                                <div className='w-5 h-5 md:w-7 md:h-7 mt-1 md:mt-0.5'><Image src="/favicon.ico" height={30} width={30} alt="logo" /></div>
+                                <span className='text-xl md:text-2xl font-semibold'>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</span>
                             </div>
                             <div className="text-center">
-                                {process.env.NEXT_PUBLIC_WEBSITE_NAME} is an E-Commerce. 
+                                {process.env.NEXT_PUBLIC_WEBSITE_NAME} is an E-Commerce website. 
                             </div>
                         </div>
                         <div className="w-full md:w-1/4 text-center">
                             <h2 className="title-font font-medium text-gray-900 tracking-widest text-lg md:text-lg mb-3">About Us</h2>
                             <p>
-                                We are students from Gokhale education society RH Sapat College of Engineering.
+                                We are students from Gokhale Education Society RH Sapat College of Engineering.
                                 We are currently pursuing degree in Computer Engineering.
                             </p>
                         </div>
@@ -54,7 +54,7 @@ const Footer = () => {
                 <div className="bg-gray-100 mt-4">
                     <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
                         <p className="text-gray-500 text-sm text-center sm:text-left">© 2022 {process.env.NEXT_PUBLIC_WEBSITE_NAME} — 
-                            <Link href='www.linkedin.com/in/kapilmundada'>@Kapil Mundada</Link>
+                            <Link href='https://www.linkedin.com/in/kapilmundada'>@Kapil Mundada</Link>
                         </p>
                         <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
                             <a className="text-gray-500">
