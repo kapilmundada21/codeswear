@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Head from 'next/head'
 import Sidebar from '../../components/Sidebar'
 import { useRouter } from 'next/router'
 
@@ -20,8 +21,13 @@ const Dashboard = () => {
   return (
     <>
       <div className='flex'>
+        <Head>
+          <title>Dashboard | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+        </Head>
         <Sidebar />
+        <div className="min-h-screen">
 
+        </div>
       </div>
     </>
   )

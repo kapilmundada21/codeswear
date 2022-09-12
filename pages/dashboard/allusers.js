@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import React, { useState, useRef, useEffect } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
 import User from "../../models/user"
 import mongoose from "mongoose";
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
@@ -123,9 +124,12 @@ const Allusers = ({ users }) => {
     return (
         <>
             <div className='flex mb-8'>
+                <Head>
+                    <title>All Users | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <Sidebar />
 
-                <div className='w-full'>
+                <div className='w-full min-h-screen'>
                     <ToastContainer
                         position="top-center"
                         autoClose={3000}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
@@ -76,6 +77,9 @@ const Signup = () => {
     }
     return (
         <div>
+            <Head>
+                <title>Signup | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+            </Head>
             <ToastContainer
                 position="top-center"
                 autoClose={3000}

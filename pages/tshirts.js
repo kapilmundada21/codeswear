@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Product from "../models/product"
@@ -7,6 +8,9 @@ import mongoose from "mongoose";
 const Tshirts = ({ products }) => {
     return (
         <div>
+            <Head>
+                <title>T-Shirts | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+            </Head>
             <section className="text-gray-600 body-font mb-6">
                 <div className="container px-5 py-4 md:py-12 mx-auto">
                     <div className="flex flex-wrap -m-4 justify-evenly md:justify-center">

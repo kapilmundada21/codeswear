@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,6 +35,9 @@ const Contactus = () => {
     }
     return (
         <div>
+            <Head>
+                <title>Contact Us | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+            </Head>
             <ToastContainer
                 position="top-center"
                 autoClose={3000}

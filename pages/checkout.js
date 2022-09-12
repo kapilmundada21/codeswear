@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
 import Product from "../models/product"
@@ -114,6 +115,9 @@ const Checkout = ({ products, clearCart, cart, addToCart, removeFromCart, subtot
     }
     return (
         <div className='container m-auto px-6 md:px-24'>
+            <Head>
+                <title>Checkout | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+            </Head>
             {modelOpen && <Modal closeModal={closeModal} message="Order Plased Sucessfully!!" sucessButton="Okay" modalSucess={modalSucess} singleButton={true} />}
             <ToastContainer
                 position="top-center"

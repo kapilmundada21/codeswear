@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
@@ -119,10 +120,13 @@ const Allproduct = ({ products }) => {
     return (
         <>
             <div className='flex mb-16'>
+                <Head>
+                    <title>All Products | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <Sidebar />
                 {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete Product: ${productName}`} sucessButton="Delete" modalSucess={modalSucess} />}
 
-                <div className='w-full'>
+                <div className='w-full min-h-screen'>
                     <ToastContainer
                         position="top-center"
                         autoClose={3000}

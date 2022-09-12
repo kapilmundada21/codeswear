@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -74,6 +75,9 @@ const AdminLogin = ({ setadmin }) => {
     return (
         <div>
             <div className="min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <Head>
+                    <title>Login | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <ToastContainer
                     position="top-center"
                     autoClose={3000}

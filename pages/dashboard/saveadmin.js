@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
@@ -156,9 +157,12 @@ const Saveadmin = () => {
     return (
         <>
             <div className='flex mb-8'>
+                <Head>
+                    <title>{id ? 'Update' : 'Add'} Admin | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <Sidebar />
 
-                <div className='w-full'>
+                <div className='w-full min-h-screen'>
                     <ToastContainer
                         position="top-center"
                         autoClose={3000}

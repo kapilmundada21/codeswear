@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import Order from '../models/order';
 import mongoose from "mongoose";
 import Link from 'next/link'
@@ -34,6 +35,9 @@ const Orders = ({ order }) => {
   }, [])
   return (
     <div className='container mx-auto min-h-screen mb-8'>
+      <Head>
+        <title>All Orders | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+      </Head>
       <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:mt-8 md:mb-6'>My Orders</h1>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -90,7 +94,7 @@ const Orders = ({ order }) => {
                       <Link href={`/order?id=${item.oid}`}><a>details</a></Link>
                     </td>
                   </tr>
-                })} 
+                })}
 
               </tbody>
             </table>

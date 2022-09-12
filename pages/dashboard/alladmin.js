@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import React, { useState, useRef, useEffect } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
 import Admin from "../../models/admin"
 import mongoose from "mongoose";
 import { FaEdit, FaSearchPlus } from 'react-icons/fa';
@@ -26,7 +27,7 @@ const Alladmin = ({ admins }) => {
     }
     const modalSucess = () => {
         deleteadmin(adminId)
-        setModelOpen(false)        
+        setModelOpen(false)
     }
     const handlePrint = useReactToPrint({
         content: () => allorders.current,
@@ -123,10 +124,13 @@ const Alladmin = ({ admins }) => {
     return (
         <>
             <div className='flex mb-8'>
+                <Head>
+                    <title>All Admins | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <Sidebar />
                 {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete Admin: ${adminName}`} sucessButton="Delete" modalSucess={modalSucess} />}
 
-                <div className='w-full'>
+                <div className='w-full min-h-screen'>
                     <ToastContainer
                         position="top-center"
                         autoClose={3000}

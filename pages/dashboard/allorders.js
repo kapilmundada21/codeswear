@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import Head from 'next/head'
 import Order from '../../models/order';
 import mongoose from "mongoose";
 import Link from 'next/link'
@@ -33,7 +34,7 @@ const Allorders = ({ orders }) => {
     let response = await res.json()
     if (response.sucess) {
       setMyOrder(response.order)
-      if(response.order.length == 0){
+      if (response.order.length == 0) {
         toast.error("Order not found!", {
           position: "top-center",
           autoClose: 3000,
@@ -59,24 +60,27 @@ const Allorders = ({ orders }) => {
   }
 
   useEffect(() => {
-      let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
-      try {
-        if (!myAdmin) {
-          router.push('/')
-        }
-      } catch (error) {
-        if (!myAdmin.token) {
-          router.push('/')
-        }
+    let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
+    try {
+      if (!myAdmin) {
+        router.push('/')
       }
-    }, [])
+    } catch (error) {
+      if (!myAdmin.token) {
+        router.push('/')
+      }
+    }
+  }, [])
 
   return (
     <>
       <div className='flex mb-8'>
+        <Head>
+          <title>All Orders | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+        </Head>
         <Sidebar />
 
-        <div className='w-full'>
+        <div className='w-full min-h-screen'>
           <ToastContainer
             position="top-center"
             autoClose={3000}

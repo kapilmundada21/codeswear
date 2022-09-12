@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Product from "../models/product"
+import mongoose from "mongoose";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Home() {
+export default function Home({ products }) {
+  // console.log(products);
   return (
     <div>
       <Head>
@@ -96,4 +99,17 @@ export default function Home() {
 
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+      await mongoose.connect(process.env.MONGO_URI)
+
+  }
+  let p = await Product.find({category : "T-Shirt"})
+  let tshirt = p.reverse().slice(0,6)
+
+  return {
+      props: { products: JSON.parse(JSON.stringify(tshirt)) }, // will be passed to
+  }
 }

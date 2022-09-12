@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,11 +21,11 @@ const Myaccount = () => {
   const [modelOpen, setModelOpen] = useState(false)
 
   const closeModal = () => {
-      setModelOpen(false)
+    setModelOpen(false)
   }
   const modalSucess = () => {
-      deleteUser()
-      setModelOpen(false)        
+    deleteUser()
+    setModelOpen(false)
   }
 
   const handelChange = async (e) => {
@@ -215,6 +216,9 @@ const Myaccount = () => {
 
   return (
     <div className='mx-auto mb-12'>
+      <Head>
+        <title>My Account | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+      </Head>
       {modelOpen && <Modal closeModal={closeModal} message={`Confirm Delete User`} sucessButton="Delete" modalSucess={modalSucess} />}
       <ToastContainer
         position="top-center"

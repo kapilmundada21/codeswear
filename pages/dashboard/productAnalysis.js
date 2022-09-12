@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import Head from 'next/head'
 import Product from '../../models/product';
 import mongoose from "mongoose";
 import Sidebar from '../../components/Sidebar';
@@ -32,7 +33,7 @@ const Productanalysis = ({ products }) => {
     let response = await res.json()
     if (response.sucess) {
       setMyproduct(response.product)
-      if(response.product.length == 0){
+      if (response.product.length == 0) {
         toast.error('Product not found!', {
           position: "top-center",
           autoClose: 3000,
@@ -41,7 +42,7 @@ const Productanalysis = ({ products }) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-        });  
+        });
       }
     }
     else {
@@ -58,24 +59,27 @@ const Productanalysis = ({ products }) => {
   }
 
   useEffect(() => {
-      let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
-      try {
-        if (!myAdmin) {
-          router.push('/')
-        }
-      } catch (error) {
-        if (!myAdmin.token) {
-          router.push('/')
-        }
+    let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
+    try {
+      if (!myAdmin) {
+        router.push('/')
       }
-    }, [])
+    } catch (error) {
+      if (!myAdmin.token) {
+        router.push('/')
+      }
+    }
+  }, [])
 
   return (
     <>
       <div className='flex mb-8'>
+        <Head>
+          <title>Product Analysis | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+        </Head>
         <Sidebar />
 
-        <div className='w-full'>
+        <div className='w-full min-h-screen'>
           <ToastContainer
             position="top-center"
             autoClose={3000}
@@ -133,7 +137,7 @@ const Productanalysis = ({ products }) => {
                       {/* <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Purchase Date
                       </th> */}
-                      
+
                       <th scope="col" className="text-sm font-medium text-gray-900 px-3 py-4 text-left">
                         Quantity
                       </th>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
@@ -20,15 +21,15 @@ const Saveuser = () => {
     useEffect(() => {
         let myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
         try {
-          if (!myAdmin) {
-            router.push('/')
-          }
+            if (!myAdmin) {
+                router.push('/')
+            }
         } catch (error) {
-          if (!myAdmin.token) {
-            router.push('/')
-          }
+            if (!myAdmin.token) {
+                router.push('/')
+            }
         }
-        
+
         if (id) {
             getUser()
         }
@@ -193,9 +194,12 @@ const Saveuser = () => {
     return (
         <>
             <div className='flex mb-8'>
+                <Head>
+                    <title>{id ? 'Update' : 'Add'} User | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                </Head>
                 <Sidebar />
 
-                <div className='w-full'>
+                <div className='w-full min-h-screen'>
                     <ToastContainer
                         position="top-center"
                         autoClose={3000}

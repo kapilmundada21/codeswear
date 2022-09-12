@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import Head from 'next/head'
 import Order from '../models/order';
 import mongoose from "mongoose";
 import Link from 'next/link'
@@ -13,6 +14,9 @@ const Orderr = ({ order }) => {
     });
     return (
         <div>
+            <Head>
+                <title>Order | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+            </Head>
             <section className="text-gray-600 body-font">
                 <div className="container px-6 md:px-12 -pt-4 md:py-8 mx-auto">
                     <div className="lg:w-11/12 mx-auto flex flex-wrap">
