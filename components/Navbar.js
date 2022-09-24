@@ -48,7 +48,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
             <div className="nav">
                 <ul className='hidden md:flex text-center space-x-3 justify-center mt-2 md:mt-0 md:ml-20 md:space-x-4'>
                     <Link href="/"><a><li className={`${router.pathname == '/' ?'font-semibold':''}`}>Home</li></a></Link>
-                    <Link href="/"><a><li className={`${router.pathname == '/about' ?'font-semibold':''}`}>About</li></a></Link>
+                    {/* <Link href="/"><a><li className={`${router.pathname == '/about' ?'font-semibold':''}`}>About</li></a></Link> */}
                     <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'font-semibold':''}`}>T-Shirts</li></a></Link>
                     <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'font-semibold':''}`}>Contact Us</li></a></Link>
                     {admin.token && <Link href="/dashboard"><a><li className={`${router.pathname == '/dashboard' ?'font-semibold':''}`}>Dashboard</li></a></Link>}
@@ -74,7 +74,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                 <ul className=''>
                     <div>
                         <Link href="/"><a><li className={`${router.pathname == '/' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Home</li></a></Link>
-                        <Link href="/"><a><li className={`${router.pathname == '/about' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>About</li></a></Link>
+                        {/* <Link href="/"><a><li className={`${router.pathname == '/about' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>About</li></a></Link> */}
                         <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>T-Shirts</li></a></Link>
                         <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Contact Us</li></a></Link>
                     </div>
