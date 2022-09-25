@@ -32,6 +32,7 @@ const Orders = ({ order }) => {
     } catch (error) {
 
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className='container mx-auto min-h-screen mb-8'>

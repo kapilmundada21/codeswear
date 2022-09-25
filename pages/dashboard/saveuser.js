@@ -44,6 +44,7 @@ const Saveuser = () => {
             setCpassword('');
             setNpassword('');
         }
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.query])
 
     const handelChange = (e) => {

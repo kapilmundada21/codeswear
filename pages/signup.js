@@ -19,6 +19,7 @@ const Signup = () => {
                 router.push('/')
             }
         }
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')

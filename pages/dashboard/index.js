@@ -16,6 +16,7 @@ const Dashboard = () => {
         router.push('/')
       }
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query])
 
   return (

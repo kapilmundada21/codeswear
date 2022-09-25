@@ -51,6 +51,7 @@ function MyApp({ Component, pageProps }) {
     checkAdmin()
     
     setKey(Math.random())
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query])
 
   const logout = ()=>{
