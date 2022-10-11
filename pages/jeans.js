@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Product from "../models/product"
 import mongoose from "mongoose";
 
-const Tshirts = ({ products }) => {
+const Jeans = ({ products }) => {
     return (
         <div>
             <Head>
-                <title>T-Shirts | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+                <title>Jeans | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
             </Head>
             <section className="text-gray-600 body-font mb-6">
                 <div className="container px-5 py-4 md:py-12 mx-auto">
@@ -54,32 +54,32 @@ export async function getServerSideProps(context) {
         await mongoose.connect(process.env.MONGO_URI)
 
     }
-    let products = await Product.find({category : "T-Shirt"})
-    let tshirt = {}
+    let products = await Product.find({category : "Jeans"})
+    let jeans = {}
     for (let items of products) {
-        if (items.title in tshirt) {
-            if (!tshirt[items.title].color.includes(items.color) && items.availableQty > 0) {
-                tshirt[items.title].color.push(items.color)
+        if (items.title in jeans) {
+            if (!jeans[items.title].color.includes(items.color) && items.availableQty > 0) {
+                jeans[items.title].color.push(items.color)
             }
-            if (!tshirt[items.title].size.includes(items.size) && items.availableQty > 0) {
-                tshirt[items.title].size.push(items.size)
+            if (!jeans[items.title].size.includes(items.size) && items.availableQty > 0) {
+                jeans[items.title].size.push(items.size)
             }
         }
         else {
-            tshirt[items.title] = JSON.parse(JSON.stringify(items))
+            jeans[items.title] = JSON.parse(JSON.stringify(items))
             if (items.availableQty > 0) {
-                tshirt[items.title].size = [items.size]
-                tshirt[items.title].color = [items.color]
+                jeans[items.title].size = [items.size]
+                jeans[items.title].color = [items.color]
             }
             else{
-                tshirt[items.title].size = []
-                tshirt[items.title].color = []
+                jeans[items.title].size = []
+                jeans[items.title].color = []
             }
         }
     }
     return {
-        props: { products: JSON.parse(JSON.stringify(tshirt)) }, // will be passed to
+        props: { products: JSON.parse(JSON.stringify(jeans)) }, // will be passed to
     }
 }
 
-export default Tshirts
+export default Jeans

@@ -50,6 +50,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                     <Link href="/"><a><li className={`${router.pathname == '/' ?'font-semibold':''}`}>Home</li></a></Link>
                     {/* <Link href="/"><a><li className={`${router.pathname == '/about' ?'font-semibold':''}`}>About</li></a></Link> */}
                     <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'font-semibold':''}`}>T-Shirts</li></a></Link>
+                    <Link href="/jeans"><a><li className={`${router.pathname == '/jeans' ?'font-semibold':''}`}>Jeans</li></a></Link>
                     <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'font-semibold':''}`}>Contact Us</li></a></Link>
                     {admin.token && <Link href="/dashboard"><a><li className={`${router.pathname == '/dashboard' ?'font-semibold':''}`}>Dashboard</li></a></Link>}
                 </ul>
@@ -76,6 +77,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
                         <Link href="/"><a><li className={`${router.pathname == '/' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Home</li></a></Link>
                         {/* <Link href="/"><a><li className={`${router.pathname == '/about' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>About</li></a></Link> */}
                         <Link href="/tshirts"><a><li className={`${router.pathname == '/tshirts' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>T-Shirts</li></a></Link>
+                        <Link href="/jeans"><a><li className={`${router.pathname == '/jeans' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Jeans</li></a></Link>
                         <Link href="/contactus"><a><li className={`${router.pathname == '/contactus' ?'bg-indigo-400':''} w-full pl-4 py-2 hover:bg-indigo-400`}>Contact Us</li></a></Link>
                     </div>
                     {admin.token && <div>
