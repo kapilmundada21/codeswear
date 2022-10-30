@@ -37,7 +37,7 @@ const Navbar = ({ adminLogout, logout, admin, user, cart, addToCart, clearCart, 
         else { setDropdown(true) }
     }
     return (
-        <div className='md:flex p-4 shadow-md fixed top-0 right-0 w-[99vw] bg-white z-10'>
+        <div className='md:flex p-4 shadow-md fixed top-0 right-0 w-[100vw] md:w-[99vw] bg-white z-40'>
             <div className="logo flex items-center space-x-3">
                 <FaBars onClick={toggleSidebar} className='md:hidden cursor-pointer' />
                 <Link href="/"><a className='flex items-center space-x-1'>
