@@ -66,13 +66,13 @@ export default function Home({ tshirt, jeans }) {
 
       <div className="px-5 md:py-6 mx-auto">
         <div className="flex flex-wrap w-full flex-col items-center text-center">
-          <h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900"><u>Featured Products</u></h1>
+          <h1 className="text-2xl font-bold title-font text-gray-900"><u>Featured Products</u></h1>
         </div>
       </div>
 
       <div className="mx-auto p-4 md:px-8 justify-center" >
         <div className="flex justify-between items-center">
-          <h1 className='font-medium text-2xl p-4'>T-Shirts</h1>
+          <h1 className='font-medium text-xl p-4'>T-Shirts</h1>
           <Link href={'/tshirts'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">See All</button></a></Link>
         </div>
         <center>
@@ -109,7 +109,7 @@ export default function Home({ tshirt, jeans }) {
 
       <div className="mx-auto p-4 md:px-8 justify-center" >
         <div className="flex justify-between items-center">
-          <h1 className='font-bold text-2xl p-4'>Jeans</h1>
+          <h1 className='font-medium text-xl p-4'>Jeans</h1>
           <Link href={'/jeans'}><a><button className="text-white bg-indigo-500 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded text-xs md:text-sm">See All</button></a></Link>
         </div>
         <center>
@@ -149,7 +149,7 @@ export default function Home({ tshirt, jeans }) {
           <div className="w-full xl:w-1/3 md:w-1/2 p-4 ">
             <div className="border border-gray-200 p-6 rounded-lg hover:bg-slate-300 bg-slate-200">
               <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                <FaTshirt className='text-xl' />
+                <FaTshirt className='text-2xl md:text-xl' />
               </div>
               <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Premium Tshirts</h2>
               <p className="leading-relaxed text-base">Our T-Shirts are 100% made of cotton.</p>
@@ -158,7 +158,7 @@ export default function Home({ tshirt, jeans }) {
           <div className="w-full xl:w-1/3 md:w-1/2 p-4">
             <div className="border border-gray-200 p-6 rounded-lg hover:bg-slate-300 bg-slate-200">
               <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                <MdLocalShipping className='text-xl' />
+                <MdLocalShipping className='text-2xl md:text-xl' />
               </div>
               <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Free Shipping</h2>
               <p className="leading-relaxed text-base">We ship all over India for FREE.</p>
@@ -167,7 +167,7 @@ export default function Home({ tshirt, jeans }) {
           <div className="w-full xl:w-1/3 md:w-1/2 p-4">
             <div className="border border-gray-200 p-6 rounded-lg hover:bg-slate-300 bg-slate-200">
               <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                <FaRupeeSign className='text-xl' />
+                <FaRupeeSign className='text-2xl md:text-xl' />
               </div>
               <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Exciting Offers</h2>
               <p className="leading-relaxed text-base">We provide amazing offers & discounts on our products.</p>
