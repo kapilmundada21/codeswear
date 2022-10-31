@@ -49,7 +49,7 @@ const Contactus = () => {
                 draggable
                 pauseOnHover
             />
-            <section className="text-gray-600 body-font relative min-h-screen">
+            <section className="text-gray-600 body-font relative min-h-screen mt-8 md:mt-0">
                 <div className="container px-5 -py-4 md:py-12 mx-auto">
                     <div className="flex flex-col text-center w-full mb-12">
                         <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>

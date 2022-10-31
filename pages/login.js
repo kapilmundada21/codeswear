@@ -90,7 +90,7 @@ const Login = ({ setuser }) => {
                 draggable
                 pauseOnHover
             />
-            <div className="min-h-screen flex  justify-center pt-12 px-4 sm:px-6 lg:px-8">
+            <div className="min-h-screen flex  justify-center pt-12 px-4 sm:px-6 lg:px-8 mt-8 md:mt-0">
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <center><Image src="/favicon.ico" height={50} width={50} alt="Logo" /></center>

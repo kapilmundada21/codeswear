@@ -75,7 +75,7 @@ const AdminLogin = ({ setadmin }) => {
     }
     return (
         <div>
-            <div className="min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className="min-h-screen flex justify-center py-12 px-4 sm:px-6 mt-8 md:mt-0 lg:px-8">
                 <Head>
                     <title>Login | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
                 </Head>

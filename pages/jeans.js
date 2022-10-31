@@ -11,7 +11,7 @@ const Jeans = ({ products }) => {
             <Head>
                 <title>Jeans | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
             </Head>
-            <section className="text-gray-600 body-font mb-6">
+            <section className="text-gray-600 body-font mb-6 mt-8 md:mt-0">
                 <div className="container px-5 py-4 md:py-12 mx-auto">
                     <div className="flex flex-wrap -m-4 justify-evenly md:justify-center">
                         {Object.keys(products).length === 0 && <p>Sorry all the products are currently out of stock. New Stock comming soon. Stay tunned!!</p>}

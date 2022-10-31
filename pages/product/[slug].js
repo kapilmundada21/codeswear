@@ -19,7 +19,7 @@ const Slug = ({ error, addToCart, buyNow, product, variant }) => {
             <Head>
                 <title>{product.title}  |  {product.category}  |  {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
             </Head>
-            <section className="text-gray-600 body-font overflow-hidden mb-12 md:mb-32">
+            <section className="text-gray-600 body-font overflow-hidden mb-12 md:mb-32 mt-8 md:mt-0">
                 <div className="container px-5 md:mt-16 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <ToastContainer

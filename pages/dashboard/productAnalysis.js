@@ -73,7 +73,7 @@ const Productanalysis = ({ products }) => {
 
   return (
     <>
-      <div className='flex mb-8'>
+      <div className='flex mt-8 md:mt-0 mb-8'>
         <Head>
           <title>Product Analysis | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
         </Head>

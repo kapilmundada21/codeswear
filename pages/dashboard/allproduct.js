@@ -120,7 +120,7 @@ const Allproduct = ({ products }) => {
 
     return (
         <>
-            <div className='flex mb-16'>
+            <div className='flex mt-8 md:mt-0 mb-16'>
                 <Head>
                     <title>All Products | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
                 </Head>

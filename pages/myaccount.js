@@ -233,7 +233,7 @@ const Myaccount = () => {
         pauseOnHover
       />
 
-      <div className='mx-4 md:mx-24'>
+      <div className='mx-4 md:mx-24 mt-8 md:mt-0'>
         <h1 className='text-2xl font-bold text-center -mt-4 mb-4 md:my-8'>My Account</h1>
         <form onSubmit={handelSubmit}>
           <h2 className='font-semibold text-xl'>1. Details</h2>

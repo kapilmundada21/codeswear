@@ -35,7 +35,7 @@ const Orders = ({ order }) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div className='container mx-auto min-h-screen mb-8'>
+    <div className='container mx-auto min-h-screen mb-8 mt-8 md:mt-0'>
       <Head>
         <title>All Orders | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
       </Head>

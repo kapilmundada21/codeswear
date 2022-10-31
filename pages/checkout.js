@@ -114,7 +114,7 @@ const Checkout = ({ products, clearCart, cart, addToCart, removeFromCart, subtot
         setState('');
     }
     return (
-        <div className='container m-auto px-6 md:px-24'>
+        <div className='container m-auto mt-8 md:mt-0 px-6 md:px-24'>
             <Head>
                 <title>Checkout | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
             </Head>

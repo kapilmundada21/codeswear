@@ -17,7 +17,7 @@ const Orderr = ({ order }) => {
             <Head>
                 <title>Order | {process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
             </Head>
-            <section className="text-gray-600 body-font">
+            <section className="text-gray-600 body-font mt-8 md:mt-0">
                 <div className="container px-6 md:px-12 -pt-4 md:py-8 mx-auto">
                     <div className="lg:w-11/12 mx-auto flex flex-wrap">
                         <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
