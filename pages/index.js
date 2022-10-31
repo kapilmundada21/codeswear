@@ -57,11 +57,11 @@ export default function Home({ tshirt, jeans }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="m-0 mb-12 p-0 w-[100%] h-auto float-left">
-        <Image src="/images/home/2.jpg" height="350%" width="755%" alt="4" />
-        <Image src="/images/home/1.png" height="350%" width="755%" alt="3" />
-        <Image src="/images/home/3.png" height="380%" width="755%" alt="2" />
-        <Image src="/images/home/4.png" height="380%" width="755%" alt="5" />
+      <div className="m-0 mb-12 p-0 w-[100%] h-auto flex flex-wrap float-left">
+        <div className="w-full md:w-1/2 cursor-pointer"><Link href="/tshirts" ><Image src="/images/home/2.jpg" height="350%" width="755%" alt="Fashion Sale1" /></Link></div>
+        <div className="w-full md:w-1/2 cursor-pointer"><Link href="/jeans" ><Image src="/images/home/1.png" height="350%" width="755%" alt="Fashion Sale2" /></Link></div>
+        <div className="w-full md:w-1/2 cursor-pointer"><Link href="/jeans" ><Image src="/images/home/3.png" height="380%" width="755%" alt="Fashion Sale3" /></Link></div>
+        <div className="w-full md:w-1/2 cursor-pointer"><Link href="/tshirts" ><Image src="/images/home/4.png" height="380%" width="755%" alt="Fashion Sale4" /></Link></div>
       </div>
 
       <div className="px-5 md:py-6 mx-auto">
