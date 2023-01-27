@@ -53,7 +53,11 @@ export default function Home({ tshirt, jeans }) {
     <div>
       <Head>
         <title>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
+        <meta name="keyword" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
+        <meta name="author" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

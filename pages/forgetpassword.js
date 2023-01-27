@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const Forgetpassword = () => {
     const [email, setEmail] = useState('')
@@ -46,7 +46,7 @@ const Forgetpassword = () => {
         if (response.sucess) {
             setToken(response.token)
             setTimeout(() => {
-                emailjs.sendForm('service_i0xpctc', 'template_k5exhfc', e.target, 'B3FiuvQc4AkxpalNW')
+                emailjs.sendForm('service_uchyy8e', 'template_k5exhfc', e.target, 'B3FiuvQc4AkxpalNW')
                     .then((result) => {
                         console.log(result.text);
                         toast.success('Password reset instructions have been sent to your email', {

@@ -2,7 +2,7 @@
   "name": "code",
   "version": "0.1.0",
   "engines": {
-    "node": "16.18.1"
+    "node": "18.13.0"
   },
   "private": true,
   "scripts": {
@@ -12,8 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "crypto-js": "^4.1.1",
-    "emailjs-com": "^3.2.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.5.2",
     "next": "12.2.4",
