@@ -1,11 +1,12 @@
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import '../styles/globals.css'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -15,18 +16,18 @@ function MyApp({ Component, pageProps }) {
   const [key, setKey] = useState()
   const [progress, setProgress] = useState(0)
   const router = useRouter();
-  const setuser = (user)=>{
+  const setuser = (user) => {
     setUser(user);
   }
-  const setadmin = (admin)=>{
+  const setadmin = (admin) => {
     setAdmin(admin);
   }
 
   useEffect(() => {
-    router.events.on('routeChangeStart' , ()=>{
+    router.events.on('routeChangeStart', () => {
       setProgress(40)
     })
-    router.events.on('routeChangeComplete' , ()=>{
+    router.events.on('routeChangeComplete', () => {
       setProgress(100)
     })
     try {
@@ -39,24 +40,24 @@ function MyApp({ Component, pageProps }) {
       localStorage.clear('cart')
     }
     const myUser = JSON.parse(localStorage.getItem('myUser'))
-    if(myUser){
-      setUser({token : myUser.token,email:myUser.email})
+    if (myUser) {
+      setUser({ token: myUser.token, email: myUser.email })
     }
     const myAdmin = JSON.parse(localStorage.getItem('myAdmin'))
-    if(myAdmin){
-      setAdmin({token : myAdmin.token,email:myAdmin.email})
+    if (myAdmin) {
+      setAdmin({ token: myAdmin.token, email: myAdmin.email })
     }
 
     checkUser()
     checkAdmin()
-    
+
     setKey(Math.random())
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query])
 
-  const logout = ()=>{
+  const logout = () => {
     localStorage.removeItem('myUser')
-    setUser({token : null,email : null})
+    setUser({ token: null, email: null })
     setKey(Math.random())
     toast.success('Logged out Sucessfully!', {
       position: "top-center",
@@ -66,14 +67,14 @@ function MyApp({ Component, pageProps }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
-      setTimeout(() => {
-        router.push('/')
-      }, 1000);
+    });
+    setTimeout(() => {
+      router.push('/')
+    }, 1000);
   }
-  const adminLogout = ()=>{
+  const adminLogout = () => {
     localStorage.removeItem('myAdmin')
-    setAdmin({token : null,user : null})
+    setAdmin({ token: null, user: null })
     setKey(Math.random())
     toast.success('Logged out Sucessfully!', {
       position: "top-center",
@@ -83,24 +84,24 @@ function MyApp({ Component, pageProps }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
-      setTimeout(() => {
-        router.push('/')
-      }, 1000);
+    });
+    setTimeout(() => {
+      router.push('/')
+    }, 1000);
   }
-  const checkUser = async ()=>{
+  const checkUser = async () => {
     let a = JSON.parse(localStorage.getItem('myUser'))
-    if(a){
-      let data = { userExist: true, email:a.email }
+    if (a) {
+      let data = { userExist: true, email: a.email }
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
-          method: 'POST', // or 'PUT'
-          headers: {
-              'Content-Type': ' application/json',
-          },
-          body: JSON.stringify(data),
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        body: JSON.stringify(data),
       })
       let response = await res.json()
-      if(!response.sucess){
+      if (!response.sucess) {
         toast.error('User not found. Please signup!', {
           position: "top-center",
           autoClose: 3000,
@@ -109,24 +110,24 @@ function MyApp({ Component, pageProps }) {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
         logout()
       }
     }
   }
-  const checkAdmin = async ()=>{
+  const checkAdmin = async () => {
     let a = JSON.parse(localStorage.getItem('myAdmin'))
-    if(a){
-      let data = { adminExist: true, email:a.email }
+    if (a) {
+      let data = { adminExist: true, email: a.email }
       let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin`, {
-          method: 'POST', // or 'PUT'
-          headers: {
-              'Content-Type': ' application/json',
-          },
-          body: JSON.stringify(data),
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        body: JSON.stringify(data),
       })
       let response = await res.json()
-      if(!response.sucess){
+      if (!response.sucess) {
         toast.error('Admin not found. Please signup!', {
           position: "top-center",
           autoClose: 3000,
@@ -135,8 +136,8 @@ function MyApp({ Component, pageProps }) {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
-          adminLogout()
+        });
+        adminLogout()
       }
     }
   }
@@ -167,7 +168,7 @@ function MyApp({ Component, pageProps }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
+    });
   }
   const clearCart = () => {
     setCart({});
@@ -180,12 +181,12 @@ function MyApp({ Component, pageProps }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
-      saveCart({});
+    });
+    saveCart({});
   }
   const buyNow = (itemCode, qty, price, name, size, variant) => {
     let newCart = {};
-    newCart[itemCode] = { qty: 1, price, name, size, variant } 
+    newCart[itemCode] = { qty: 1, price, name, size, variant }
     setCart(newCart)
     localStorage.setItem('cart', JSON.stringify(newCart))
     setSubtotal(price);
@@ -209,27 +210,35 @@ function MyApp({ Component, pageProps }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
+    });
   }
 
   return <>
+    <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
+      <meta name="keyword" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
+      <meta name="author" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+      <meta property="og:title" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME}`} />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     <LoadingBar
-        color='#f11946'
-        progress={progress}
-        waitingTime={400}
-        onLoaderFinished={() => setProgress(0)}
-      />
+      color='#f11946'
+      progress={progress}
+      waitingTime={400}
+      onLoaderFinished={() => setProgress(0)}
+    />
     {key && <Navbar admin={admin} user={user} setadmin={setadmin} setuser={setuser} key={key} adminLogout={adminLogout} logout={logout} cart={cart} buyNow={buyNow} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} subtotal={subtotal} />}
     <Component admin={admin} user={user} setadmin={setadmin} setuser={setuser} cart={cart} adminLogout={adminLogout} buyNow={buyNow} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} subtotal={subtotal}  {...pageProps} />
     <Footer />

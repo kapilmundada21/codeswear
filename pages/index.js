@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Product from "../models/product"
 import mongoose from "mongoose";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Product from "../models/product"
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { FaTshirt, FaRupeeSign } from 'react-icons/fa';
@@ -53,12 +51,6 @@ export default function Home({ tshirt, jeans }) {
     <div>
       <Head>
         <title>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
-        <meta name="keyword" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
-        <meta name="author" content={`${process.env.NEXT_PUBLIC_WEBSITE_NAME} is an online Store where you can purchase cloths`} />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="m-0 mb-12 p-0 w-[100%] h-auto flex flex-wrap float-left">
